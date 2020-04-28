@@ -5,6 +5,8 @@ import App from './components/App';
 const PROJECT_NAME = 'interactive-scrollout';
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
+console.log(":)")
+
 function init() {
   render(<App projectName={PROJECT_NAME} />, root);
 }
