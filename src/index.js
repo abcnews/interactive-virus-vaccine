@@ -6,6 +6,9 @@ const PROJECT_NAME = 'interactive-scrollout';
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
 console.log(":)")
+const fragment = document.querySelector(".html-fragment");
+
+fragment.className = "inline-content html-fragment full u-full"
 
 function init() {
   render(<App projectName={PROJECT_NAME} />, root);

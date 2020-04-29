@@ -2,6 +2,9 @@ import React from "react";
 import styles from "./styles.scss";
 import worm from "./worm.svg";
 
+import BackgroundStage from "../BackgroundStage";
+import CustomPanel from "../CustomPanel"
+
 import Scrollyteller, {
   loadOdysseyScrollyteller
 } from "@abcnews/scrollyteller";
@@ -14,15 +17,12 @@ const scrollyData = loadOdysseyScrollyteller(
 
 export default props => {
   return (
-    <div className={styles.root}>
-      <img className={styles.worm} src={worm} />
-      <h1>{props.projectName}</h1>
-      <Scrollyteller
-        panels={scrollyData.panels}
-        onMarker={() => console.log("mark")}
-      >
-        A TEST
-      </Scrollyteller>
-    </div>
+    <Scrollyteller
+      panels={scrollyData.panels}
+      onMarker={() => console.log("mark")}
+      panelComponent={CustomPanel}
+    >
+      <BackgroundStage />
+    </Scrollyteller>
   );
 };
