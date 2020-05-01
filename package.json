@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@abcnews/scrollyteller": "^1.4.4",
+    "d3-scale": "^3.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }

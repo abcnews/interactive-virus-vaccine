@@ -75,7 +75,12 @@ export default props => {
       }`}
     >
       <div className={styles.inner}>
-        <div className={styles.panel} ref={base}></div>
+        <div
+          className={`${
+            props.config.scrollout ? "custom-scrollout-panel" : ""
+          } ${styles.panel}`}
+          ref={base}
+        ></div>
       </div>
     </div>
   );
