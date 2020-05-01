@@ -1,11 +1,11 @@
 .base {
   box-sizing: border-box;
 
-  // padding-top: 2.25rem;
-  // padding-bottom: 0.9rem;
+  padding-top: 2.25rem;
+  padding-bottom: 0.9rem;
 
-  // margin-bottom: 49vh;
-  // margin-top: 49vh;
+  margin-bottom: 49vh;
+  margin-top: 49vh;
   margin-left: auto;
   margin-right: auto;
 
@@ -14,20 +14,16 @@
 
   width: 61.25rem;
 
-  // &:nth-of-type(2) {
-  //   margin-top: 50vh;
-  // }
+  &:nth-of-type(2) {
+    margin-top: 90vh;
+  }
 
-  // &:last-of-type {
-  //   margin-bottom: 100vh;
-  // }
-
-  p {
-    margin-bottom: 2.25rem;
+  &:last-of-type {
+    margin-bottom: 100vh;
   }
 
   &::before {
-    content: '';
+    content: "";
 
     background-color: rgba(0, 0, 0, 0.6);
     // border-radius: 4px;
@@ -44,14 +40,14 @@
   }
 
   &::after {
-    content: '';
+    content: "";
     display: table;
     clear: both;
   }
 
   p {
     font-family: ABCSerif, Book Antiqua, Palatino Linotype, Palatino, serif;
-    font-size: 1.125rem;
+    font-size: 1.375rem;
     line-height: 1.666666667;
     color: #fefefe;
 
@@ -83,7 +79,9 @@
 }
 
 .hidden {
-  position: absolute; top: 9999px; left: -9999px;
+  position: absolute;
+  top: 9999px;
+  left: -9999px;
 }
 
 @media only screen and (min-width: 1023px) {
@@ -117,5 +115,88 @@
       font-size: 1.125rem;
       line-height: 1.555555556;
     }
+  }
+}
+
+.scrollout {
+  &::before {
+    $color: rgba(250, 250, 250, 0);
+    background-color: $color;
+  }
+
+  margin-bottom: 0;
+  margin-top: 0;
+
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  background-image: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 100%, 0) 0vh,
+      hsla(0, 0%, 100%, 0.013) 8.1vh,
+      hsla(0, 0%, 100%, 0.049) 15.5vh,
+      hsla(0, 0%, 100%, 0.104) 22.5vh,
+      hsla(0, 0%, 100%, 0.175) 29vh,
+      hsla(0, 0%, 100%, 0.259) 35.3vh,
+      hsla(0, 0%, 100%, 0.352) 41.2vh,
+      hsla(0, 0%, 100%, 0.45) 47.1vh,
+      hsla(0, 0%, 100%, 0.55) 52.9vh,
+      hsla(0, 0%, 100%, 0.648) 58.8vh,
+      hsla(0, 0%, 100%, 0.741) 64.7vh,
+      hsla(0, 0%, 100%, 0.825) 71vh,
+      hsla(0, 0%, 100%, 0.896) 77.5vh,
+      hsla(0, 0%, 100%, 0.951) 84.5vh,
+      hsla(0, 0%, 100%, 0.987) 91.9vh,
+      hsl(0, 0%, 100%) 100vh,
+      rgba(255, 255, 255, 1) 110vh,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    linear-gradient(
+      to top,
+      hsla(0, 0%, 100%, 0) 0vh,
+      hsla(0, 0%, 100%, 0.013) 8.1vh,
+      hsla(0, 0%, 100%, 0.049) 15.5vh,
+      hsla(0, 0%, 100%, 0.104) 22.5vh,
+      hsla(0, 0%, 100%, 0.175) 29vh,
+      hsla(0, 0%, 100%, 0.259) 35.3vh,
+      hsla(0, 0%, 100%, 0.352) 41.2vh,
+      hsla(0, 0%, 100%, 0.45) 47.1vh,
+      hsla(0, 0%, 100%, 0.55) 52.9vh,
+      hsla(0, 0%, 100%, 0.648) 58.8vh,
+      hsla(0, 0%, 100%, 0.741) 64.7vh,
+      hsla(0, 0%, 100%, 0.825) 71vh,
+      hsla(0, 0%, 100%, 0.896) 77.5vh,
+      hsla(0, 0%, 100%, 0.951) 84.5vh,
+      hsla(0, 0%, 100%, 0.987) 91.9vh,
+      hsl(0, 0%, 100%) 100vh,
+      rgba(255, 255, 255, 1) 110vh,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+  .inner {
+    background-color: white;
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
+
+  .panel {
+    width: 61.25rem;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 900px) {
+    .panel {
+      width: 100% !important;
+
+      p {
+        width: 100%;
+      }
+    }
+  }
+
+  // background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+  padding-top: 100vh;
+  padding-bottom: 100vh;
+  p {
+    font-size: 1.125rem;
   }
 }

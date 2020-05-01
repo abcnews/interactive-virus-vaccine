@@ -21,7 +21,6 @@
   "dependencies": {
     "@abcnews/scrollyteller": "^1.4.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-jsx-parser": "^1.23.0"
+    "react-dom": "^16.13.1"
   }
 }
