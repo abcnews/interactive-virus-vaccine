@@ -8,12 +8,14 @@ export default props => {
 
   const onScroll = () => {
     if (props.config.scrollout) {
-      console.log(base.current.getBoundingClientRect().top);
       const top = base.current.getBoundingClientRect().top;
-      if (top < 0) {
+      const bottom = base.current.getBoundingClientRect().bottom;
+
+      // Fade in top
+      if (top > window.innerHeight - 200 || bottom < 0 + 200) {
         setOpacity(0.1);
       } else {
-        setOpacity(1.0)
+        setOpacity(1.0);
       }
     }
   };
