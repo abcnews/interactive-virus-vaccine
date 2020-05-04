@@ -2,20 +2,43 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 import styles from "./styles.scss";
 
+const FADE_THRESHOLD = 300;
+
+const d3 = { ...require("d3-scale") };
+
+const opacityScale = d3
+  .scaleLinear()
+  .domain([1, FADE_THRESHOLD])
+  .range([0, 1]);
+
 export default props => {
   const base = useRef();
   const [opacity, setOpacity] = useState(1.0);
 
   const onScroll = () => {
+    // Only run on Scrollout panels
     if (props.config.scrollout) {
       const top = base.current.getBoundingClientRect().top;
       const bottom = base.current.getBoundingClientRect().bottom;
 
       // Fade in top
-      if (top > window.innerHeight - 200 || bottom < 0 + 200) {
-        setOpacity(0.1);
-      } else {
-        setOpacity(1.0);
+      if (top < window.innerHeight && top > 0) {
+        const pixelsAboveFold = window.innerHeight - top;
+
+        if (pixelsAboveFold > FADE_THRESHOLD) {
+          setOpacity(1.0);
+        } else {
+          setOpacity(opacityScale(pixelsAboveFold));
+        }
+      }
+
+      // Fade in bottom
+      if (bottom > 0 && bottom < window.innerHeight) {
+        if (bottom > FADE_THRESHOLD) {
+          setOpacity(1.0);
+        } else {
+          setOpacity(opacityScale(bottom));
+        }
       }
     }
   };
