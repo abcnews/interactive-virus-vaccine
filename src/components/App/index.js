@@ -22,25 +22,25 @@ const scrollyData = loadOdysseyScrollyteller(
 );
 
 export default props => {
-  const scrollTweener = (progress, panel, pixelsAboveFold) => {
-    const scrolloutPanel = document.querySelector(".custom-scrollout-panel");
+  // const scrollTweener = (progress, panel, pixelsAboveFold) => {
+  //   const scrolloutPanel = document.querySelector(".custom-scrollout-panel");
 
-    if (!panel.config.scrollout) {
-      scrolloutPanel.style.opacity = 0.0;
-      return;
-    }
+  //   if (!panel.config.scrollout) {
+  //     scrolloutPanel.style.opacity = 0.0;
+  //     return;
+  //   }
 
-    console.log(pixelsAboveFold);
+  //   console.log(pixelsAboveFold);
 
-    scrolloutPanel.style.opacity = opacityScale(pixelsAboveFold);
-  };
+  //   scrolloutPanel.style.opacity = opacityScale(pixelsAboveFold);
+  // };
 
   return (
     <Scrollyteller
       panels={scrollyData.panels}
       onMarker={() => console.log("mark")}
       panelComponent={CustomPanel}
-      scrollTween={scrollTweener}
+      // scrollTween={scrollTweener}
     >
       <BackgroundStage />
     </Scrollyteller>

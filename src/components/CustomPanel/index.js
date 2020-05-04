@@ -1,15 +1,22 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
+
 import styles from "./styles.scss";
-
-// import JsxParser from "react-jsx-parser";
-
-// import story from "../App/story";
-// import { AppContext } from "../../AppContext";
-
-// const tempData = require("../App/yearly-bom-sci.json");
 
 export default props => {
   const base = useRef();
+  const [opacity, setOpacity] = useState(1.0);
+
+  const onScroll = () => {
+    if (props.config.scrollout) {
+      console.log(base.current.getBoundingClientRect().top);
+      const top = base.current.getBoundingClientRect().top;
+      if (top < 0) {
+        setOpacity(0.1);
+      } else {
+        setOpacity(1.0)
+      }
+    }
+  };
 
   // Once on mount we append Core text to the panels/pars
   useEffect(() => {
@@ -21,6 +28,7 @@ export default props => {
 
     if (!props.config.swap) {
       const isMobile = window.innerWidth < 440;
+
       // Append CoreMedia nodes
       props.nodes.forEach(node => {
         // Make sure images fit inside the panels
@@ -55,6 +63,8 @@ export default props => {
       });
     }
 
+    window.addEventListener("scroll", onScroll);
+
     // On unmount
     return () => {
       if (!base.current) return;
@@ -65,6 +75,7 @@ export default props => {
           base.current.removeChild(node);
         }
       });
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
@@ -80,6 +91,7 @@ export default props => {
             props.config.scrollout ? "custom-scrollout-panel" : ""
           } ${styles.panel}`}
           ref={base}
+          style={{ opacity: opacity }}
         ></div>
       </div>
     </div>

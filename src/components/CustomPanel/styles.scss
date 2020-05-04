@@ -210,12 +210,20 @@
     color: black;
 
     &::before {
-    content: '';
-    display: block;
-    margin: 5rem auto 1.5rem;
-    width: 7.5rem;
-    height: 0.125rem;
-    background-color: rgba(179,179,179,0.7);
+      content: "";
+      display: block;
+      margin: 5rem auto 1.5rem;
+      width: 7.5rem;
+      height: 0.125rem;
+      background-color: rgba(179, 179, 179, 0.7);
     }
   }
+}
+
+.is-scrolling {
+  background-color: blue;
+}
+
+.is-not-scrolling {
+  background-color: red;
 }
