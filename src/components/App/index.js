@@ -1,13 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
 
-const d3 = { ...require("d3-scale") };
-
-const opacityScale = d3
-  .scaleLinear()
-  .domain([1, 300])
-  .range([0, 1]);
-
 import BackgroundStage from "../BackgroundStage";
 import CustomPanel from "../CustomPanel";
 

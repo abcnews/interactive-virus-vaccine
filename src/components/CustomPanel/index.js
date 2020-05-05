@@ -2,44 +2,50 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 import styles from "./styles.scss";
 
-const FADE_THRESHOLD = 300;
+// How far into the page before full opacity
+const FADE_THRESHOLD = 400;
+
+// How far to remain invisible
+const FADE_OFFSET = 100;
 
 const d3 = { ...require("d3-scale") };
 
 const opacityScale = d3
   .scaleLinear()
-  .domain([1, FADE_THRESHOLD])
-  .range([0, 1]);
+  .domain([FADE_OFFSET, FADE_THRESHOLD])
+  .range([0, 1])
+  .clamp(true);
 
 export default props => {
   const base = useRef();
   const [opacity, setOpacity] = useState(1.0);
 
+  // Fade in our scrollout panels as they come into view
   const onScroll = () => {
+    const windowHeight = window.innerHeight;
+
     // Only run on Scrollout panels
-    if (props.config.scrollout) {
-      const top = base.current.getBoundingClientRect().top;
-      const bottom = base.current.getBoundingClientRect().bottom;
+    if (!props.config.scrollout) return;
 
-      // Fade in top
-      if (top < window.innerHeight && top > 0) {
-        const pixelsAboveFold = window.innerHeight - top;
+    // Get top and bottom positions of panel
+    const top = base.current.getBoundingClientRect().top;
+    const bottom = base.current.getBoundingClientRect().bottom;
 
-        if (pixelsAboveFold > FADE_THRESHOLD) {
-          setOpacity(1.0);
-        } else {
-          setOpacity(opacityScale(pixelsAboveFold));
-        }
-      }
+    // If panel is off screen make it invisible and do nothing else
+    if (bottom < 0 || top > windowHeight) {
+      setOpacity(0.0);
+      return;
+    }
 
-      // Fade in bottom
-      if (bottom > 0 && bottom < window.innerHeight) {
-        if (bottom > FADE_THRESHOLD) {
-          setOpacity(1.0);
-        } else {
-          setOpacity(opacityScale(bottom));
-        }
-      }
+    // Fade in top
+    if (top < windowHeight && top > 0) {
+      const pixelsAboveFold = windowHeight - top;
+      setOpacity(opacityScale(pixelsAboveFold));
+    }
+
+    // Fade in bottom
+    if (bottom > 0 && bottom < windowHeight) {
+      setOpacity(opacityScale(bottom));
     }
   };
 
