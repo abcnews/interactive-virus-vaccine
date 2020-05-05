@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.scss';
 
-import testsvg from "./test.svg"
+import testsvg from "./animation-test.svg"
 
 
 
