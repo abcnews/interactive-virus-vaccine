@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.scss";
 
 import BackgroundStage from "../BackgroundStage";
@@ -15,27 +15,20 @@ const scrollyData = loadOdysseyScrollyteller(
 );
 
 export default props => {
-  // const scrollTweener = (progress, panel, pixelsAboveFold) => {
-  //   const scrolloutPanel = document.querySelector(".custom-scrollout-panel");
+  const [storyState, setStoryState] = useState();
 
-  //   if (!panel.config.scrollout) {
-  //     scrolloutPanel.style.opacity = 0.0;
-  //     return;
-  //   }
-
-  //   console.log(pixelsAboveFold);
-
-  //   scrolloutPanel.style.opacity = opacityScale(pixelsAboveFold);
-  // };
+  const processMarker = event => {
+    console.log(event);
+    setStoryState(event.key)
+  };
 
   return (
     <Scrollyteller
       panels={scrollyData.panels}
-      onMarker={() => console.log("mark")}
+      onMarker={processMarker}
       panelComponent={CustomPanel}
-      // scrollTween={scrollTweener}
     >
-      <BackgroundStage />
+      <BackgroundStage storyState={storyState} />
     </Scrollyteller>
   );
 };

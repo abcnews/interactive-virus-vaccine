@@ -1,23 +1,23 @@
 import "./keyshapejs.js";
 
-import React from "react";
+import React, { useEffect } from "react";
 import SVG from "react-inlinesvg";
-import { Keyshape } from "react-keyshape";
 
 import styles from "./styles.scss";
-
 import testsvg from "./animation-test.svg";
+import virus from "./images/virus.svg";
 
 export default props => {
+  useEffect(() => {
+    console.log(props.storyState);
+  });
+
   return (
     <div className={styles.root}>
-      <Keyshape
-        svg={testsvg}
-        callback={(player, keyshapeElement) => {
-          setTimeout(() => {
-            player.pause();
-          }, 8000); // Pauses the animation after 8s.
-        }}
+      <SVG
+        src={props.storyState === "virus" ? virus : testsvg}
+        // uniquifyIDs={true}
+        uniqueHash={"unique"}
       />
     </div>
   );
