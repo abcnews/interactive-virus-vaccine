@@ -16,7 +16,7 @@ export default props => {
     <div className={styles.root}>
       <SVG
         src={props.storyState === "virus" ? virus : testsvg}
-        // uniquifyIDs={true}
+        uniquifyIDs={true}
         uniqueHash={"unique"}
       />
     </div>
