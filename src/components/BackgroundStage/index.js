@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import SVG from "react-inlinesvg";
 
 import styles from "./styles.scss";
-import testsvg from "./animation-test.svg";
+import testsvg from "./images/vax.svg";
 import virus from "./images/virus.svg";
 
 export default props => {
@@ -14,11 +14,13 @@ export default props => {
 
   return (
     <div className={styles.root}>
-      <SVG
-        src={props.storyState === "virus" ? virus : testsvg}
-        uniquifyIDs={true}
-        uniqueHash={"unique"}
-      />
+      <div className={styles.svgContainer}>
+        <SVG
+          src={props.storyState === "virus" ? virus : testsvg}
+          // uniquifyIDs={true}
+          // uniqueHash={"unique"}
+        />
+      </div>
     </div>
   );
 };
