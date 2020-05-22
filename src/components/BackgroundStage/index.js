@@ -1,6 +1,6 @@
 import "./keyshapejs.js";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SVG from "react-inlinesvg";
 
 import styles from "./styles.scss";
@@ -16,11 +16,19 @@ import vaccine6 from "./testing/vaccine1-6.svg";
 import vaccine7 from "./testing/vaccine1-7.svg";
 import vaccine8 from "./testing/vaccine1-8.svg";
 import vaccine9 from "./testing/vaccine1-9.svg";
+import vaccine10 from "./testing/vaccine1-10.svg";
+import vaccine11 from "./testing/vaccine1-11.svg";
+import vaccine12 from "./testing/vaccine1-12.svg";
 
 export default props => {
+  const [preload, setPreload] = useState(true);
+
   useEffect(() => {
-    console.log(props.storyState);
-  });
+
+    setTimeout(() => {
+      setPreload(false);
+    }, 3000);
+  }, []); // Load once on mount
 
   const getAnimation = key => {
     switch (props.storyState) {
@@ -42,6 +50,12 @@ export default props => {
         return vaccine8;
       case "nine":
         return vaccine9;
+      case "ten":
+        return vaccine10;
+      case "eleven":
+        return vaccine11;
+      case "twelve":
+        return vaccine12;
       default:
         return vaccine1;
     }
@@ -56,17 +70,22 @@ export default props => {
           // uniqueHash={"unique"}
         />
       </div>
-      <div className={styles.preload}>
-        {/* <SVG src={vaccine1} uniquifyIDs={true} />
-        <SVG src={vaccine2} uniquifyIDs={true} />
-        <SVG src={vaccine3} uniquifyIDs={true} />
-        <SVG src={vaccine4} uniquifyIDs={true} />
-        <SVG src={vaccine5} uniquifyIDs={true} />
-        <SVG src={vaccine6} uniquifyIDs={true} />
-        <SVG src={vaccine7} uniquifyIDs={true} />
-        <SVG src={vaccine8} uniquifyIDs={true} />
-        <SVG src={vaccine9} uniquifyIDs={true} /> */}
-      </div>
+      {preload && (
+        <div className={styles.preload}>
+          <SVG src={vaccine1} uniquifyIDs={true} />
+          <SVG src={vaccine2} uniquifyIDs={true} />
+          <SVG src={vaccine3} uniquifyIDs={true} />
+          <SVG src={vaccine4} uniquifyIDs={true} />
+          <SVG src={vaccine5} uniquifyIDs={true} />
+          <SVG src={vaccine6} uniquifyIDs={true} />
+          <SVG src={vaccine7} uniquifyIDs={true} />
+          <SVG src={vaccine8} uniquifyIDs={true} />
+          <SVG src={vaccine9} uniquifyIDs={true} />
+          <SVG src={vaccine10} uniquifyIDs={true} />
+          <SVG src={vaccine11} uniquifyIDs={true} />
+          <SVG src={vaccine12} uniquifyIDs={true} />
+        </div>
+      )}
     </div>
   );
 };
