@@ -57,7 +57,7 @@ export default props => {
         />
       </div>
       <div className={styles.preload}>
-        <SVG src={vaccine1} uniquifyIDs={true} />
+        {/* <SVG src={vaccine1} uniquifyIDs={true} />
         <SVG src={vaccine2} uniquifyIDs={true} />
         <SVG src={vaccine3} uniquifyIDs={true} />
         <SVG src={vaccine4} uniquifyIDs={true} />
@@ -65,7 +65,7 @@ export default props => {
         <SVG src={vaccine6} uniquifyIDs={true} />
         <SVG src={vaccine7} uniquifyIDs={true} />
         <SVG src={vaccine8} uniquifyIDs={true} />
-        <SVG src={vaccine9} uniquifyIDs={true} />
+        <SVG src={vaccine9} uniquifyIDs={true} /> */}
       </div>
     </div>
   );
