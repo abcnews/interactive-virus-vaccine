@@ -2,6 +2,7 @@ import "./keyshapejs.js";
 
 import React, { useEffect, useState } from "react";
 import SVG from "react-inlinesvg";
+import { useWindowSize } from "@react-hook/window-size";
 
 import styles from "./styles.scss";
 import testsvg from "./images/vax.svg";
@@ -22,9 +23,11 @@ import vaccine12 from "./testing/vaccine1-12.svg";
 
 export default props => {
   const [preload, setPreload] = useState(true);
+  const [windowWidth, windowHeight] = useWindowSize();
+
+  console.log(windowWidth);
 
   useEffect(() => {
-
     setTimeout(() => {
       setPreload(false);
     }, 3000);
@@ -68,6 +71,7 @@ export default props => {
           src={props.storyState === "virus" ? virus : getAnimation()}
           // uniquifyIDs={true}
           // uniqueHash={"unique"}
+          baseURL="/home"
         />
       </div>
       {preload && (
