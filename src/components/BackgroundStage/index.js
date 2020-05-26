@@ -21,6 +21,10 @@ import vaccine10 from "./testing/vaccine1-10.svg";
 import vaccine11 from "./testing/vaccine1-11.svg";
 import vaccine12 from "./testing/vaccine1-12.svg";
 
+// Load our animation files
+const base = "./sequence/";
+const sequences = { default: { one: require(base + "vaccine1-1.svg") } };
+
 export default props => {
   const [preload, setPreload] = useState(true);
   const [windowWidth, windowHeight] = useWindowSize();
@@ -30,13 +34,13 @@ export default props => {
   useEffect(() => {
     setTimeout(() => {
       setPreload(false);
-    }, 3000);
+    }, 2000);
   }, []); // Load once on mount
 
   const getAnimation = key => {
     switch (props.storyState) {
       case "one":
-        return vaccine1;
+        return sequences.default.one;
       case "two":
         return vaccine2;
       case "three":
