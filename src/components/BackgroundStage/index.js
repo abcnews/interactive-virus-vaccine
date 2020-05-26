@@ -23,7 +23,12 @@ import vaccine12 from "./testing/vaccine1-12.svg";
 
 // Load our animation files
 const base = "./sequence/";
-const sequences = { default: { one: require(base + "vaccine1-1.svg") } };
+const sequences = {
+  default: {
+    one: require(base + "vaccine1-1.svg"),
+    two: require(base + "vaccine1-2.svg")
+  }
+};
 
 export default props => {
   const [preload, setPreload] = useState(true);
@@ -72,13 +77,13 @@ export default props => {
     <div className={styles.root}>
       <div className={styles.svgContainer}>
         <SVG
-          src={props.storyState === "virus" ? virus : getAnimation()}
+          src={sequences.default[props.storyState]}
           // uniquifyIDs={true}
           // uniqueHash={"unique"}
           baseURL="/home"
         />
       </div>
-      {preload && (
+      {/* {preload && (
         <div className={styles.preload}>
           <SVG src={vaccine1} uniquifyIDs={true} />
           <SVG src={vaccine2} uniquifyIDs={true} />
@@ -93,7 +98,7 @@ export default props => {
           <SVG src={vaccine11} uniquifyIDs={true} />
           <SVG src={vaccine12} uniquifyIDs={true} />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
