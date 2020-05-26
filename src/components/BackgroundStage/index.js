@@ -26,13 +26,24 @@ const base = "./sequence/";
 const sequences = {
   default: {
     one: require(base + "vaccine1-1.svg"),
-    two: require(base + "vaccine1-2.svg")
+    two: require(base + "vaccine1-2.svg"),
+    three: require(base + "vaccine1-3.svg"),
+    four: require(base + "vaccine1-4.svg"),
+    five: require(base + "vaccine1-5.svg"),
+    six: require(base + "vaccine1-6.svg"),
+    seven: require(base + "vaccine1-7.svg"),
+    eight: require(base + "vaccine1-8.svg"),
+    nine: require(base + "vaccine1-9.svg"),
+    ten: require(base + "vaccine1-10.svg"),
+    eleven: require(base + "vaccine1-11.svg"),
+    twelve: require(base + "vaccine1-12.svg")
   }
 };
 
 export default props => {
   const [preload, setPreload] = useState(true);
   const [windowWidth, windowHeight] = useWindowSize();
+  const [view, setView] = useState("default");
 
   console.log(windowWidth);
 
@@ -77,7 +88,7 @@ export default props => {
     <div className={styles.root}>
       <div className={styles.svgContainer}>
         <SVG
-          src={sequences.default[props.storyState]}
+          src={sequences[view][props.storyState]}
           // uniquifyIDs={true}
           // uniqueHash={"unique"}
           baseURL="/home"
