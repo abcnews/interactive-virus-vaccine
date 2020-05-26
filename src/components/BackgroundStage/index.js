@@ -53,36 +53,7 @@ export default props => {
     }, 2000);
   }, []); // Load once on mount
 
-  const getAnimation = key => {
-    switch (props.storyState) {
-      case "one":
-        return sequences.default.one;
-      case "two":
-        return vaccine2;
-      case "three":
-        return vaccine3;
-      case "four":
-        return vaccine4;
-      case "five":
-        return vaccine5;
-      case "six":
-        return vaccine6;
-      case "seven":
-        return vaccine7;
-      case "eight":
-        return vaccine8;
-      case "nine":
-        return vaccine9;
-      case "ten":
-        return vaccine10;
-      case "eleven":
-        return vaccine11;
-      case "twelve":
-        return vaccine12;
-      default:
-        return vaccine1;
-    }
-  };
+  
 
   return (
     <div className={styles.root}>
@@ -91,7 +62,6 @@ export default props => {
           src={sequences[view][props.storyState]}
           // uniquifyIDs={true}
           // uniqueHash={"unique"}
-          baseURL="/home"
         />
       </div>
       {/* {preload && (
@@ -113,3 +83,37 @@ export default props => {
     </div>
   );
 };
+
+
+
+
+// const getAnimation = key => {
+  //   switch (props.storyState) {
+  //     case "one":
+  //       return sequences.default.one;
+  //     case "two":
+  //       return vaccine2;
+  //     case "three":
+  //       return vaccine3;
+  //     case "four":
+  //       return vaccine4;
+  //     case "five":
+  //       return vaccine5;
+  //     case "six":
+  //       return vaccine6;
+  //     case "seven":
+  //       return vaccine7;
+  //     case "eight":
+  //       return vaccine8;
+  //     case "nine":
+  //       return vaccine9;
+  //     case "ten":
+  //       return vaccine10;
+  //     case "eleven":
+  //       return vaccine11;
+  //     case "twelve":
+  //       return vaccine12;
+  //     default:
+  //       return vaccine1;
+  //   }
+  // };

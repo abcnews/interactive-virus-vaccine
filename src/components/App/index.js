@@ -17,8 +17,8 @@ const scrollyData = loadOdysseyScrollyteller(
 export default props => {
   const [storyState, setStoryState] = useState();
 
-  const processMarker = event => {
-    console.log(event);
+  const processMarker = (event, test) => {
+    console.log(event, test);
     setStoryState(event.key)
   };
 
