@@ -64,22 +64,23 @@ export default props => {
           // uniqueHash={"unique"}
         />
       </div>
-      {/* {preload && (
+      {preload && (
         <div className={styles.preload}>
-          <SVG src={vaccine1} uniquifyIDs={true} />
-          <SVG src={vaccine2} uniquifyIDs={true} />
-          <SVG src={vaccine3} uniquifyIDs={true} />
-          <SVG src={vaccine4} uniquifyIDs={true} />
-          <SVG src={vaccine5} uniquifyIDs={true} />
-          <SVG src={vaccine6} uniquifyIDs={true} />
-          <SVG src={vaccine7} uniquifyIDs={true} />
-          <SVG src={vaccine8} uniquifyIDs={true} />
-          <SVG src={vaccine9} uniquifyIDs={true} />
-          <SVG src={vaccine10} uniquifyIDs={true} />
-          <SVG src={vaccine11} uniquifyIDs={true} />
-          <SVG src={vaccine12} uniquifyIDs={true} />
+          <SVG src={sequences[view]["one"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["two"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["four"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["five"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["six"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["seven"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["eight"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["nine"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["ten"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["eleven"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["twelve"]} uniquifyIDs={true} />
         </div>
-      )} */}
+      )}
     </div>
   );
 };
