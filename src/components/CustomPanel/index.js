@@ -37,7 +37,7 @@ export default props => {
       return;
     }
 
-    // Fade in top if needed otherwise just make visible
+    // Fade in and out top if needed otherwise just make visible
     if (top < windowHeight && top > 0 && !props.config.scrollouttop) {
       const pixelsAboveFold = windowHeight - top;
       setOpacity(opacityScale(pixelsAboveFold));
@@ -45,10 +45,11 @@ export default props => {
       setOpacity(1.0);
     }
 
-    // Fade in bottom
-    if (bottom > 0 && bottom < windowHeight) {
-      setOpacity(opacityScale(bottom));
-    }
+    // NOTE: We are no longer fading the bottom of the paragraph text
+    // Fade out and in bottom
+    // if (bottom > 0 && bottom < windowHeight) {
+    //   setOpacity(opacityScale(bottom));
+    // }
   };
 
   // Once on mount we append Core text to the panels/pars

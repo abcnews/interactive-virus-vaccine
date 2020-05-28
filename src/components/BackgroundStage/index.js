@@ -57,20 +57,22 @@ export default props => {
     <div className={styles.root}>
       <div className={styles.svgContainer}>
         <SVG
-          src={sequences[view][props.storyState] || sequences[view]["one"] }
-          // preProcessor={code => {
-          //   // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
-          //   // INSIDE A G ELEMENT
-          //   const topGroupTag = code.replace("<g", "<g><g");
-          //   const position = topGroupTag.lastIndexOf("</g>");
+          src={sequences[view][props.storyState] || sequences[view]["one"]}
+          preProcessor={code => {
+            // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
+            // INSIDE A G ELEMENT
+            // OK Ben put everything in a g el but it already had
+            // a transform on it. So let's put it in another <g>
+            const topGroupTag = code.replace("</defs><g", "</defs><g><g");
+            const position = topGroupTag.lastIndexOf("</g>");
 
-          //   const output =
-          //     topGroupTag.substring(0, position + 3) +
-          //     "</g>" +
-          //     topGroupTag.substring(position + 3);
+            const output =
+              topGroupTag.substring(0, position + 3) +
+              "</g>" +
+              topGroupTag.substring(position + 3);
 
-          //   return output;
-          // }}
+            return output;
+          }}
           // uniquifyIDs={true}
           // uniqueHash={"unique"}
         />
