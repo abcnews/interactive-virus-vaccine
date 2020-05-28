@@ -57,7 +57,7 @@ export default props => {
     <div className={styles.root}>
       <div className={styles.svgContainer}>
         <SVG
-          src={sequences[view][props.storyState]}
+          src={sequences[view][props.storyState] || sequences[view]["one"] }
           // preProcessor={code => {
           //   // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
           //   // INSIDE A G ELEMENT
