@@ -2,7 +2,7 @@ $fade-height: 100vh;
 
 .base {
   // Fix for panels going behind the stage
-  -webkit-transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0, 0, 0);
 
   box-sizing: border-box;
 
@@ -178,7 +178,7 @@ $fade-height: 100vh;
     );
 
   .inner {
-    background-color: white;
+    background-color: #e3f5f5;
     padding-top: 4em;
     padding-bottom: 4em;
   }
@@ -200,6 +200,7 @@ $fade-height: 100vh;
 
   p {
     font-size: 1.125rem;
+    margin-bottom: 2.25rem;
   }
 
   h2 {
@@ -219,5 +220,22 @@ $fade-height: 100vh;
       height: 0.125rem;
       background-color: rgba(179, 179, 179, 0.7);
     }
+  }
+}
+
+.scrollout-top {
+  margin-top: 0 !important;
+  padding-top: 0;
+
+  .inner {
+    padding-top: 0;
+  }
+}
+
+// This is to prevent extra paragraph spacing
+:global {
+  .u-full {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }

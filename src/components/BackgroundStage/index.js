@@ -59,16 +59,17 @@ export default props => {
         <SVG
           src={sequences[view][props.storyState]}
           // preProcessor={code => {
-
           //   // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
           //   // INSIDE A G ELEMENT
           //   const topGroupTag = code.replace("<g", "<g><g");
-          //   const bottomGroupTag = topGroupTag.replace(
-          //     /<\/g><script/,
-          //     "</g></g><script"
-          //   );
+          //   const position = topGroupTag.lastIndexOf("</g>");
 
-          //   return bottomGroupTag;
+          //   const output =
+          //     topGroupTag.substring(0, position + 3) +
+          //     "</g>" +
+          //     topGroupTag.substring(position + 3);
+
+          //   return output;
           // }}
           // uniquifyIDs={true}
           // uniqueHash={"unique"}
