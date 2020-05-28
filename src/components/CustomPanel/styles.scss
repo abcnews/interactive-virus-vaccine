@@ -133,48 +133,48 @@ $fade-height: 100vh;
   padding-bottom: $fade-height;
 
   width: 100%;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: hsla(180, 47%, 93%, 0);
   background-image: linear-gradient(
       to bottom,
-      hsla(0, 0%, 100%, 0) $fade-height * 0,
-      hsla(0, 0%, 100%, 0.013) $fade-height * 0.081,
-      hsla(0, 0%, 100%, 0.049) $fade-height * 0.155,
-      hsla(0, 0%, 100%, 0.104) $fade-height * 0.225,
-      hsla(0, 0%, 100%, 0.175) $fade-height * 0.29,
-      hsla(0, 0%, 100%, 0.259) $fade-height * 0.353,
-      hsla(0, 0%, 100%, 0.352) $fade-height * 0.412,
-      hsla(0, 0%, 100%, 0.45) $fade-height * 0.471,
-      hsla(0, 0%, 100%, 0.55) $fade-height * 0.529,
-      hsla(0, 0%, 100%, 0.648) $fade-height * 0.588,
-      hsla(0, 0%, 100%, 0.741) $fade-height * 0.647,
-      hsla(0, 0%, 100%, 0.825) $fade-height * 0.71,
-      hsla(0, 0%, 100%, 0.896) $fade-height * 0.775,
-      hsla(0, 0%, 100%, 0.951) $fade-height * 0.845,
-      hsla(0, 0%, 100%, 0.987) $fade-height * 0.919,
-      hsl(0, 0%, 100%) $fade-height * 1,
-      rgba(255, 255, 255, 1) $fade-height * 1.1,
-      rgba(255, 255, 255, 0) 100%
+      hsla(180, 47%, 93%, 0) $fade-height * 0,
+      hsla(180, 47%, 93%, 0.013) $fade-height * 0.081,
+      hsla(180, 47%, 93%, 0.049) $fade-height * 0.155,
+      hsla(180, 47%, 93%, 0.104) $fade-height * 0.225,
+      hsla(180, 47%, 93%, 0.175) $fade-height * 0.29,
+      hsla(180, 47%, 93%, 0.259) $fade-height * 0.353,
+      hsla(180, 47%, 93%, 0.352) $fade-height * 0.412,
+      hsla(180, 47%, 93%, 0.45) $fade-height * 0.471,
+      hsla(180, 47%, 93%, 0.55) $fade-height * 0.529,
+      hsla(180, 47%, 93%, 0.648) $fade-height * 0.588,
+      hsla(180, 47%, 93%, 0.741) $fade-height * 0.647,
+      hsla(180, 47%, 93%, 0.825) $fade-height * 0.71,
+      hsla(180, 47%, 93%, 0.896) $fade-height * 0.775,
+      hsla(180, 47%, 93%, 0.951) $fade-height * 0.845,
+      hsla(180, 47%, 93%, 0.987) $fade-height * 0.919,
+      hsl(180, 47%, 93%) $fade-height * 1,
+      hsla(180, 47%, 93%, 1) $fade-height * 1.1,
+      hsla(180, 47%, 93%, 0) 100%
     ),
     linear-gradient(
       to top,
-      hsla(0, 0%, 100%, 0) $fade-height * 0,
-      hsla(0, 0%, 100%, 0.013) $fade-height * 0.081,
-      hsla(0, 0%, 100%, 0.049) $fade-height * 0.155,
-      hsla(0, 0%, 100%, 0.104) $fade-height * 0.225,
-      hsla(0, 0%, 100%, 0.175) $fade-height * 0.29,
-      hsla(0, 0%, 100%, 0.259) $fade-height * 0.353,
-      hsla(0, 0%, 100%, 0.352) $fade-height * 0.412,
-      hsla(0, 0%, 100%, 0.45) $fade-height * 0.471,
-      hsla(0, 0%, 100%, 0.55) $fade-height * 0.529,
-      hsla(0, 0%, 100%, 0.648) $fade-height * 0.588,
-      hsla(0, 0%, 100%, 0.741) $fade-height * 0.647,
-      hsla(0, 0%, 100%, 0.825) $fade-height * 0.71,
-      hsla(0, 0%, 100%, 0.896) $fade-height * 0.775,
-      hsla(0, 0%, 100%, 0.951) $fade-height * 0.845,
-      hsla(0, 0%, 100%, 0.987) $fade-height * 0.919,
-      hsl(0, 0%, 100%) $fade-height * 1,
-      rgba(255, 255, 255, 1) $fade-height * 1.1,
-      rgba(255, 255, 255, 0) 100%
+      hsla(180, 47%, 93%, 0) $fade-height * 0,
+      hsla(180, 47%, 93%, 0.013) $fade-height * 0.081,
+      hsla(180, 47%, 93%, 0.049) $fade-height * 0.155,
+      hsla(180, 47%, 93%, 0.104) $fade-height * 0.225,
+      hsla(180, 47%, 93%, 0.175) $fade-height * 0.29,
+      hsla(180, 47%, 93%, 0.259) $fade-height * 0.353,
+      hsla(180, 47%, 93%, 0.352) $fade-height * 0.412,
+      hsla(180, 47%, 93%, 0.45) $fade-height * 0.471,
+      hsla(180, 47%, 93%, 0.55) $fade-height * 0.529,
+      hsla(180, 47%, 93%, 0.648) $fade-height * 0.588,
+      hsla(180, 47%, 93%, 0.741) $fade-height * 0.647,
+      hsla(180, 47%, 93%, 0.825) $fade-height * 0.71,
+      hsla(180, 47%, 93%, 0.896) $fade-height * 0.775,
+      hsla(180, 47%, 93%, 0.951) $fade-height * 0.845,
+      hsla(180, 47%, 93%, 0.987) $fade-height * 0.919,
+      hsl(180, 47%, 93%) $fade-height * 1,
+      hsla(180, 47%, 93%, 1) $fade-height * 1.1,
+      hsla(180, 47%, 93%, 0) 100%
     );
 
   .inner {
@@ -235,7 +235,7 @@ $fade-height: 100vh;
 // This is to prevent extra paragraph spacing
 :global {
   .u-full {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
   }
 }
