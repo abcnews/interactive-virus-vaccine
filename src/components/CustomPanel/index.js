@@ -37,10 +37,12 @@ export default props => {
       return;
     }
 
-    // Fade in top
+    // Fade in top if needed otherwise just make visible
     if (top < windowHeight && top > 0 && !props.config.scrollouttop) {
       const pixelsAboveFold = windowHeight - top;
       setOpacity(opacityScale(pixelsAboveFold));
+    } else {
+      setOpacity(1.0);
     }
 
     // Fade in bottom
