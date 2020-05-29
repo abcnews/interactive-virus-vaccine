@@ -20,8 +20,8 @@ const sequences = {
       animation: require("./animations/vaccine1-1")
     },
     two: {
-      svg: require(base + "vaccine1-2.svg")
-      // animation: require("./animations/vaccine1-2")
+      svg: require(base + "vaccine1-2.svg"),
+      animation: require("./animations/vaccine1-2")
     },
     three: require(base + "vaccine1-3.svg"),
     four: require(base + "vaccine1-4.svg"),
@@ -36,11 +36,24 @@ const sequences = {
   }
 };
 
+let tl;
+
 export default props => {
   const [preload, setPreload] = useState(true);
   const [windowWidth, windowHeight] = useWindowSize();
   const [view, setView] = useState("default");
-  const [animationName, setAnimationName] = useState("one")
+  const [animationName, setAnimationName] = useState("two");
+
+  const svgLoaded = () => {
+    if (sequences[view][animationName].animation) {
+      tl = sequences[view][animationName].animation(window.ks);
+      tl.onfinish = animationEnded;
+    }
+  };
+
+  const animationEnded = () => {
+    console.log("Animation eneded...");
+  };
 
   useEffect(() => {
     setTimeout(() => {
@@ -48,9 +61,11 @@ export default props => {
     }, 2000);
   }, []); // Load once on mount
 
-  useEffect(() => {});
+  useEffect(() => {
+    setAnimationName(props.storyState);
+  }, [props.storyState]);
 
-  // TODO: set props.storyState to change the animationName when 
+  // TODO: set props.storyState to change the animationName when
   // animation reaches the end
 
   return (
@@ -58,20 +73,8 @@ export default props => {
       <div className={styles.svgContainer}>
         {sequences[view][animationName] && (
           <SVG
-            src={
-              sequences[view][animationName].svg || sequences[view]["one"]
-            }
-            onLoad={() => {
-              if (sequences[view][animationName].animation) {
-                const tl = sequences[view][animationName].animation(
-                  window.ks
-                );
-                tl.onfinish = function() {
-                  console.log("Done!");
-                  tl.time("LoopStart");
-                }; // gets called once
-              }
-            }}
+            src={sequences[view][animationName].svg || sequences[view]["one"]}
+            onLoad={svgLoaded}
             preProcessor={code => {
               // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
               // INSIDE A G ELEMENT
