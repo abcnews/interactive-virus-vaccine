@@ -11,28 +11,30 @@ import styles from "./styles.scss";
 import testsvg from "./images/vax.svg";
 import virus from "./images/virus.svg";
 
-// Load our animation files
+import { has } from "lodash";
+
+// Load our animation files and JavaScript animations
 const base = "./sequence/";
 const sequences = {
   default: {
     one: {
-      svg: require(base + "vaccine1-1.svg"),
+      svg: require("./sequence/vaccine1-1.svg"),
       animation: require("./animations/vaccine1-1")
     },
     two: {
-      svg: require(base + "vaccine1-2.svg"),
+      svg: require("./sequence/vaccine1-2.svg"),
       animation: require("./animations/vaccine1-2")
     },
-    three: require(base + "vaccine1-3.svg"),
-    four: require(base + "vaccine1-4.svg"),
-    five: require(base + "vaccine1-5.svg"),
-    six: require(base + "vaccine1-6.svg"),
-    seven: require(base + "vaccine1-7.svg"),
-    eight: require(base + "vaccine1-8.svg"),
-    nine: require(base + "vaccine1-9.svg"),
-    ten: require(base + "vaccine1-10.svg"),
-    eleven: require(base + "vaccine1-11.svg"),
-    twelve: require(base + "vaccine1-12.svg")
+    three: require("./sequence/vaccine1-3.svg"),
+    four: require("./sequence/vaccine1-4.svg"),
+    five: require("./sequence/vaccine1-5.svg"),
+    six: require("./sequence/vaccine1-6.svg"),
+    seven: require("./sequence/vaccine1-7.svg"),
+    eight: require("./sequence/vaccine1-8.svg"),
+    nine: require("./sequence/vaccine1-9.svg"),
+    ten: require("./sequence/vaccine1-10.svg"),
+    eleven: require("./sequence/vaccine1-11.svg"),
+    twelve: require("./sequence/vaccine1-12.svg")
   }
 };
 
@@ -47,6 +49,15 @@ export default props => {
   const svgLoaded = () => {
     if (sequences[view][animationName].animation) {
       tl = sequences[view][animationName].animation(window.ks);
+
+      console.log(tl);
+
+      if (has(tl, "_options.markers.LoopStart")) {
+        console.log("LoopStart present...");
+      } else {
+        console.log("No loop");
+      }
+
       tl.onfinish = animationEnded;
     }
   };
@@ -71,29 +82,30 @@ export default props => {
   return (
     <div className={styles.root}>
       <div className={styles.svgContainer}>
-        {sequences[view][animationName] && (
-          <SVG
-            src={sequences[view][animationName].svg || sequences[view]["one"]}
-            onLoad={svgLoaded}
-            preProcessor={code => {
-              // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
-              // INSIDE A G ELEMENT
-              // OK Ben put everything in a g el but it already had
-              // a transform on it. So let's put it in another <g>
-              const topGroupTag = code.replace("</defs><g", "</defs><g><g");
-              const position = topGroupTag.lastIndexOf("</g>");
+        {sequences[view][animationName] &&
+          sequences[view][animationName]["svg"] && (
+            <SVG
+              src={sequences[view][animationName].svg || sequences[view]["one"]}
+              onLoad={svgLoaded}
+              preProcessor={code => {
+                // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
+                // INSIDE A G ELEMENT
+                // OK Ben put everything in a g el but it already had
+                // a transform on it. So let's put it in another <g>
+                const topGroupTag = code.replace("</defs><g", "</defs><g><g");
+                const position = topGroupTag.lastIndexOf("</g>");
 
-              const output =
-                topGroupTag.substring(0, position + 3) +
-                "</g>" +
-                topGroupTag.substring(position + 3);
+                const output =
+                  topGroupTag.substring(0, position + 3) +
+                  "</g>" +
+                  topGroupTag.substring(position + 3);
 
-              return output;
-            }}
-            // uniquifyIDs={true}
-            // uniqueHash={"unique"}
-          />
-        )}
+                return output;
+              }}
+              // uniquifyIDs={true}
+              // uniqueHash={"unique"}
+            />
+          )}
       </div>
       {preload && (
         <div className={styles.preload}>
