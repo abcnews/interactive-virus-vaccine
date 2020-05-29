@@ -40,6 +40,7 @@ export default props => {
   const [preload, setPreload] = useState(true);
   const [windowWidth, windowHeight] = useWindowSize();
   const [view, setView] = useState("default");
+  const [animationName, setAnimationName] = useState("one")
 
   useEffect(() => {
     setTimeout(() => {
@@ -47,21 +48,28 @@ export default props => {
     }, 2000);
   }, []); // Load once on mount
 
-  useEffect(() => {
-    
-  });
+  useEffect(() => {});
+
+  // TODO: set props.storyState to change the animationName when 
+  // animation reaches the end
 
   return (
     <div className={styles.root}>
       <div className={styles.svgContainer}>
-        {sequences[view][props.storyState] && (
+        {sequences[view][animationName] && (
           <SVG
             src={
-              sequences[view][props.storyState].svg || sequences[view]["one"]
+              sequences[view][animationName].svg || sequences[view]["one"]
             }
             onLoad={() => {
-              if (sequences[view][props.storyState].animation) {
-                sequences[view][props.storyState].animation(window.ks);
+              if (sequences[view][animationName].animation) {
+                const tl = sequences[view][animationName].animation(
+                  window.ks
+                );
+                tl.onfinish = function() {
+                  console.log("Done!");
+                  tl.time("LoopStart");
+                }; // gets called once
               }
             }}
             preProcessor={code => {

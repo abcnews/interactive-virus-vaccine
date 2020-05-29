@@ -1,18 +1,24 @@
 const animate = ks => {
-  ks.animate(
-    "#Coronavirus",
-    [
-      {
-        p: "rotate",
-        t: [0, 1000, 2000, 3000],
-        v: [-2, 0, -2, 0],
-        e: [[1, 0.4, 0, 0.6, 1], [1, 0.4, 0, 0.6, 1], [1, 0.4, 0, 0.6, 1], [0]]
-      }
-    ],
-    "#Coronavirus-label",
-    [{ p: "opacity", t: [500, 1000], v: [0, 1], e: [[0], [0]] }],
-    { autoremove: false, markers: { LoopStart: 1000 } }
-  )
+  const tl = ks
+    .animate(
+      "#Coronavirus",
+      [
+        {
+          p: "rotate",
+          t: [0, 1000, 2000, 3000],
+          v: [-2, 0, -2, 0],
+          e: [
+            [1, 0.4, 0, 0.6, 1],
+            [1, 0.4, 0, 0.6, 1],
+            [1, 0.4, 0, 0.6, 1],
+            [0]
+          ]
+        }
+      ],
+      "#Coronavirus-label",
+      [{ p: "opacity", t: [500, 1000], v: [0, 1], e: [[0], [0]] }],
+      { autoremove: false, markers: { LoopStart: 1000 } }
+    )
     .range(1000, 3000)
     .time(1000);
   if (
@@ -22,6 +28,8 @@ const animate = ks => {
       .indexOf("global=paused") >= 0
   )
     ks.globalPause();
+
+  return tl;
 };
 
 module.exports = animate;
