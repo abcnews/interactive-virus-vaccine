@@ -1,4 +1,7 @@
 import "./keyshapejs.js";
+if (KeyshapeJS.version.indexOf("1.") != 0)
+  throw Error("Expected KeyshapeJS v1.*.*");
+window.ks = document.ks = KeyshapeJS;
 
 import React, { useEffect, useState } from "react";
 import SVG from "react-inlinesvg";
@@ -8,25 +11,18 @@ import styles from "./styles.scss";
 import testsvg from "./images/vax.svg";
 import virus from "./images/virus.svg";
 
-import vaccine1 from "./testing/vaccine1-1.svg";
-import vaccine2 from "./testing/vaccine1-2.svg";
-import vaccine3 from "./testing/vaccine1-3.svg";
-import vaccine4 from "./testing/vaccine1-4.svg";
-import vaccine5 from "./testing/vaccine1-5.svg";
-import vaccine6 from "./testing/vaccine1-6.svg";
-import vaccine7 from "./testing/vaccine1-7.svg";
-import vaccine8 from "./testing/vaccine1-8.svg";
-import vaccine9 from "./testing/vaccine1-9.svg";
-import vaccine10 from "./testing/vaccine1-10.svg";
-import vaccine11 from "./testing/vaccine1-11.svg";
-import vaccine12 from "./testing/vaccine1-12.svg";
-
 // Load our animation files
 const base = "./sequence/";
 const sequences = {
   default: {
-    one: require(base + "vaccine1-1.svg"),
-    two: require(base + "vaccine1-2.svg"),
+    one: {
+      svg: require(base + "vaccine1-1.svg"),
+      animation: require("./animations/vaccine1-1")
+    },
+    two: {
+      svg: require(base + "vaccine1-2.svg")
+      // animation: require("./animations/vaccine1-2")
+    },
     three: require(base + "vaccine1-3.svg"),
     four: require(base + "vaccine1-4.svg"),
     five: require(base + "vaccine1-5.svg"),
@@ -45,43 +41,54 @@ export default props => {
   const [windowWidth, windowHeight] = useWindowSize();
   const [view, setView] = useState("default");
 
-  console.log(windowWidth);
-
   useEffect(() => {
     setTimeout(() => {
       setPreload(false);
     }, 2000);
   }, []); // Load once on mount
 
+  useEffect(() => {
+    
+  });
+
   return (
     <div className={styles.root}>
       <div className={styles.svgContainer}>
-        <SVG
-          src={sequences[view][props.storyState] || sequences[view]["one"]}
-          preProcessor={code => {
-            // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
-            // INSIDE A G ELEMENT
-            // OK Ben put everything in a g el but it already had
-            // a transform on it. So let's put it in another <g>
-            const topGroupTag = code.replace("</defs><g", "</defs><g><g");
-            const position = topGroupTag.lastIndexOf("</g>");
+        {sequences[view][props.storyState] && (
+          <SVG
+            src={
+              sequences[view][props.storyState].svg || sequences[view]["one"]
+            }
+            onLoad={() => {
+              if (sequences[view][props.storyState].animation) {
+                sequences[view][props.storyState].animation(window.ks);
+              }
+            }}
+            preProcessor={code => {
+              // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
+              // INSIDE A G ELEMENT
+              // OK Ben put everything in a g el but it already had
+              // a transform on it. So let's put it in another <g>
+              const topGroupTag = code.replace("</defs><g", "</defs><g><g");
+              const position = topGroupTag.lastIndexOf("</g>");
 
-            const output =
-              topGroupTag.substring(0, position + 3) +
-              "</g>" +
-              topGroupTag.substring(position + 3);
+              const output =
+                topGroupTag.substring(0, position + 3) +
+                "</g>" +
+                topGroupTag.substring(position + 3);
 
-            return output;
-          }}
-          // uniquifyIDs={true}
-          // uniqueHash={"unique"}
-        />
+              return output;
+            }}
+            // uniquifyIDs={true}
+            // uniqueHash={"unique"}
+          />
+        )}
       </div>
       {preload && (
         <div className={styles.preload}>
-          <SVG src={sequences[view]["one"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["two"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["one"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["two"].svg} uniquifyIDs={true} />
+          {/* <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["four"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["five"]} uniquifyIDs={true} />
@@ -91,7 +98,7 @@ export default props => {
           <SVG src={sequences[view]["nine"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["ten"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["eleven"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["twelve"]} uniquifyIDs={true} />
+          <SVG src={sequences[view]["twelve"]} uniquifyIDs={true} /> */}
         </div>
       )}
     </div>

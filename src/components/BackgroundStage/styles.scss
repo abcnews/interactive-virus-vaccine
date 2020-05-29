@@ -15,8 +15,10 @@
   svg {
     height: 100vh;
 
-    > g {
-      transform: translateX(-20vw);
+    @media only screen and (min-width: 1023px) {
+      > g {
+        transform: translateX(-20vw);
+      }
     }
   }
 }

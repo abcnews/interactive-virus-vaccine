@@ -11,8 +11,6 @@ const embed = document.querySelector(".embed-fragment");
 if (fragment) fragment.className = "inline-content html-fragment full u-full";
 if (embed) embed.className = "embed-fragment u-full";
 
-console.log(":)!!!");
-
 function init() {
   render(<App projectName={PROJECT_NAME} />, root);
 }
