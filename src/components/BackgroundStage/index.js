@@ -19,51 +19,63 @@ const sequences = {
   default: {
     one: {
       svg: require("./sequence/vaccine1-1.svg"),
-      animation: require("./animations/vaccine1-1")
+      animation: require("./animations/vaccine1-1"),
+      index: 1
     },
     two: {
       svg: require("./sequence/vaccine1-2.svg"),
-      animation: require("./animations/vaccine1-2")
+      animation: require("./animations/vaccine1-2"),
+      index: 2
     },
     three: {
       svg: require("./sequence/vaccine1-3.svg"),
-      animation: require("./animations/vaccine1-3")
+      animation: require("./animations/vaccine1-3"),
+      index: 3
     },
     four: {
       svg: require("./sequence/vaccine1-4.svg"),
-      animation: require("./animations/vaccine1-4")
+      animation: require("./animations/vaccine1-4"),
+      index: 4
     },
     five: {
       svg: require("./sequence/vaccine1-5.svg"),
-      animation: require("./animations/vaccine1-5")
+      animation: require("./animations/vaccine1-5"),
+      index: 5
     },
     six: {
       svg: require("./sequence/vaccine1-6.svg"),
-      animation: require("./animations/vaccine1-6")
+      animation: require("./animations/vaccine1-6"),
+      index: 6
     },
     seven: {
       svg: require("./sequence/vaccine1-7.svg"),
-      animation: require("./animations/vaccine1-7")
+      animation: require("./animations/vaccine1-7"),
+      index: 7
     },
     eight: {
       svg: require("./sequence/vaccine1-8.svg"),
-      animation: require("./animations/vaccine1-8")
+      animation: require("./animations/vaccine1-8"),
+      index: 8
     },
     nine: {
       svg: require("./sequence/vaccine1-9.svg"),
-      animation: require("./animations/vaccine1-9")
+      animation: require("./animations/vaccine1-9"),
+      index: 9
     },
     ten: {
       svg: require("./sequence/vaccine1-10.svg"),
-      animation: require("./animations/vaccine1-10")
+      animation: require("./animations/vaccine1-10"),
+      index: 10
     },
     eleven: {
       svg: require("./sequence/vaccine1-11.svg"),
-      animation: require("./animations/vaccine1-11")
+      animation: require("./animations/vaccine1-11"),
+      index: 11
     },
     twelve: {
       svg: require("./sequence/vaccine1-12.svg"),
-      animation: require("./animations/vaccine1-12")
+      animation: require("./animations/vaccine1-12"),
+      index: 12
     }
   }
 };
@@ -119,8 +131,19 @@ export default props => {
       console.log(nextAnimation);
       setAnimationName(nextAnimation);
     } else {
+      // It is animating
+
       nextAnimation = props.storyState;
       console.log(nextAnimation);
+
+      // Detect whether we are scrolling back up page
+      if (
+        sequences[view][nextAnimation].index <
+        sequences[view][animationName].index
+      ) {
+        console.log("Next animation is less than...");
+        setAnimationName(nextAnimation);
+      }
     }
   }, [props.storyState]);
 
