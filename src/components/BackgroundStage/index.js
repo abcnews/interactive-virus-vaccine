@@ -25,7 +25,10 @@ const sequences = {
       svg: require("./sequence/vaccine1-2.svg"),
       animation: require("./animations/vaccine1-2")
     },
-    three: require("./sequence/vaccine1-3.svg"),
+    three: {
+      svg: require("./sequence/vaccine1-3.svg"),
+      animation: require("./animations/vaccine1-3")
+    },
     four: require("./sequence/vaccine1-4.svg"),
     five: require("./sequence/vaccine1-5.svg"),
     six: require("./sequence/vaccine1-6.svg"),
@@ -63,6 +66,11 @@ export default props => {
   const animationEnded = () => {
     isAnimating = false;
     console.log("Animation eneded...");
+    // Switch to next animation (if different)
+    setAnimationName(nextAnimation);
+
+    // Only loop if on same animation
+    if (animationName !== nextAnimation) return;
 
     if (has(tl, "_options.markers.LoopStart")) {
       console.log("LoopStart present...");
@@ -71,9 +79,6 @@ export default props => {
     } else {
       console.log("No loop");
     }
-
-    // Switch to next animation (if different)
-    setAnimationName(nextAnimation);
   };
 
   useEffect(() => {
@@ -127,6 +132,7 @@ export default props => {
         <div className={styles.preload}>
           <SVG src={sequences[view]["one"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["two"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["three"].svg} uniquifyIDs={true} />
           {/* <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
           <SVG src={sequences[view]["four"]} uniquifyIDs={true} />
