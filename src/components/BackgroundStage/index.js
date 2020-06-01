@@ -39,6 +39,8 @@ const sequences = {
 };
 
 let tl;
+let isAnimating;
+let nextAnimation;
 
 export default props => {
   const [preload, setPreload] = useState(true);
@@ -48,6 +50,7 @@ export default props => {
 
   const svgLoaded = () => {
     if (sequences[view][animationName].animation) {
+      isAnimating = true;
       tl = sequences[view][animationName].animation(window.ks);
 
       console.log(tl);
@@ -64,6 +67,8 @@ export default props => {
 
   const animationEnded = () => {
     console.log("Animation eneded...");
+    isAnimating = false;
+    setAnimationName(nextAnimation);
   };
 
   useEffect(() => {
@@ -73,7 +78,14 @@ export default props => {
   }, []); // Load once on mount
 
   useEffect(() => {
-    setAnimationName(props.storyState);
+    if (!isAnimating) {
+      nextAnimation = props.storyState;
+      console.log(nextAnimation);
+      setAnimationName(nextAnimation);
+    } else {
+      nextAnimation = props.storyState;
+      
+    }
   }, [props.storyState]);
 
   // TODO: set props.storyState to change the animationName when
