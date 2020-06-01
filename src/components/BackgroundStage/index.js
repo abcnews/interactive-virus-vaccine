@@ -55,19 +55,24 @@ export default props => {
 
       console.log(tl);
 
-      if (has(tl, "_options.markers.LoopStart")) {
-        console.log("LoopStart present...");
-      } else {
-        console.log("No loop");
-      }
-
+      // Fire the animationEnded method on finish
       tl.onfinish = animationEnded;
     }
   };
 
   const animationEnded = () => {
-    console.log("Animation eneded...");
     isAnimating = false;
+    console.log("Animation eneded...");
+
+    if (has(tl, "_options.markers.LoopStart")) {
+      console.log("LoopStart present...");
+      tl.play("LoopStart");
+      isAnimating = true;
+    } else {
+      console.log("No loop");
+    }
+
+    // Switch to next animation (if different)
     setAnimationName(nextAnimation);
   };
 
@@ -84,7 +89,6 @@ export default props => {
       setAnimationName(nextAnimation);
     } else {
       nextAnimation = props.storyState;
-      
     }
   }, [props.storyState]);
 
