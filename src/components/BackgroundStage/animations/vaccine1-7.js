@@ -1,41 +1,10 @@
 const animate = function(ks) {
-  const tl = ks
-    .animate(
-      "#Coronavirus",
-      [
-        { p: "opacity", t: [0, 500], v: [1, 0.3], e: [[1, 0, 0, 0.6, 1], [0]] },
-        {
-          p: "filter",
-          t: [0, 500],
-          v: ["saturate(1)", "saturate(0)"],
-          e: [[0], [0]]
-        }
-      ],
-      "#Spike-protein-text",
-      [{ p: "opacity", t: [750, 1250], v: [0, 1], e: [[0], [0]] }],
-      "#Spike-protein-label-path",
-      [
-        { p: "opacity", t: [500, 542], v: [0, 1], e: [[0], [0]] },
-        {
-          p: "d",
-          t: [500, 1000],
-          v: [
-            "path('M-72.7,94.5L-72.7,94.5')",
-            "path('M-41.4,60.2L-72.7,94.5')"
-          ],
-          e: [[1, 0, 0, 0.6, 1], [0]]
-        }
-      ],
-      { autoremove: false }
-    )
-    .range(0, 1250);
-  if (
-    document.location.search
-      .substr(1)
-      .split("&")
-      .indexOf("global=paused") >= 0
-  )
-    ks.globalPause();
+  const tl = ks.animate("#All",[{p:'mpath',t:[0,1500],v:['0%','100%'],e:[[1,.2,.5,.5,.9],[0]],mp:"M234.8,407.3L472.3,-134.5"}],
+  "#_a0",[{p:'rotate',t:[250,1250,2250,3250,4250],v:[0,4,0,4,0],e:[[1,.4,0,.6,1],[1,.4,0,.6,1],[1,.4,0,.6,1],[1,.4,0,.6,1],[0]]}],
+  "#B-Cell",[{p:'rotate',t:[0,2250],v:[-50,0],e:[[1,0,0,.6,1],[0]]}],
+  "#_a1",[{p:'mpath',t:[0,1500],v:['0%','100%'],e:[[1,.2,.5,.5,.9],[0]],mp:"M-160.4,899.5L76.3,370.1"},{p:'opacity',t:[1500,2250],v:[0,1],e:[[0],[0]]}],
+  {autoremove:false,markers:{"LoopStart":2250}}).range(0,4250);
+  if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.globalPause()
 
   return tl;
 };

@@ -41,30 +41,30 @@ const sequences = {
       svg: require("./sequence/vaccine1-6.svg"),
       animation: require("./animations/vaccine1-6")
     },
-    // seven: {
-    //   svg: require("./sequence/vaccine1-7.svg"),
-    //   animation: require("./animations/vaccine1-7")
-    // },
-    // eight: {
-    //   svg: require("./sequence/vaccine1-8.svg"),
-    //   animation: require("./animations/vaccine1-8")
-    // },
-    // nine: {
-    //   svg: require("./sequence/vaccine1-9.svg"),
-    //   animation: require("./animations/vaccine1-9")
-    // },
-    // ten: {
-    //   svg: require("./sequence/vaccine1-10.svg"),
-    //   animation: require("./animations/vaccine1-10")
-    // },
-    // eleven: {
-    //   svg: require("./sequence/vaccine1-11.svg"),
-    //   animation: require("./animations/vaccine1-11")
-    // },
-    // twelve: {
-    //   svg: require("./sequence/vaccine1-12.svg"),
-    //   animation: require("./animations/vaccine1-12")
-    // }
+    seven: {
+      svg: require("./sequence/vaccine1-7.svg"),
+      animation: require("./animations/vaccine1-7")
+    },
+    eight: {
+      svg: require("./sequence/vaccine1-8.svg"),
+      animation: require("./animations/vaccine1-8")
+    },
+    nine: {
+      svg: require("./sequence/vaccine1-9.svg"),
+      animation: require("./animations/vaccine1-9")
+    },
+    ten: {
+      svg: require("./sequence/vaccine1-10.svg"),
+      animation: require("./animations/vaccine1-10")
+    },
+    eleven: {
+      svg: require("./sequence/vaccine1-11.svg"),
+      animation: require("./animations/vaccine1-11")
+    },
+    twelve: {
+      svg: require("./sequence/vaccine1-12.svg"),
+      animation: require("./animations/vaccine1-12")
+    }
   }
 };
 
@@ -163,12 +163,12 @@ export default props => {
           <SVG src={sequences[view]["four"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["five"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["six"].svg} uniquifyIDs={true} />
-          {/* <SVG src={sequences[view]["seven"].svg} uniquifyIDs={true} /> */}
-          {/* <SVG src={sequences[view]["eight"].svg} uniquifyIDs={true} /> */}
-          {/* <SVG src={sequences[view]["nine"].svg} uniquifyIDs={true} /> */}
-          {/* <SVG src={sequences[view]["ten"].svg} uniquifyIDs={true} /> */}
-          {/* <SVG src={sequences[view]["eleven"].svg} uniquifyIDs={true} /> */}
-          {/* <SVG src={sequences[view]["twelve"].svg} uniquifyIDs={true} /> */}
+          <SVG src={sequences[view]["seven"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["eight"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["nine"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["ten"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["eleven"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["twelve"].svg} uniquifyIDs={true} />
         </div>
       )}
     </div>
