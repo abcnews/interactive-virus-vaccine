@@ -102,7 +102,6 @@ export default props => {
 
   const animationEnded = () => {
     isAnimating = false;
-    console.log("Animation eneded...");
     // Switch to next animation (if different)
     setAnimationName(nextAnimation);
 
@@ -111,7 +110,6 @@ export default props => {
 
     // Check if loop marker is present and if so loop
     if (has(tl, "_options.markers.LoopStart")) {
-      console.log("LoopStart present...");
       tl.play("LoopStart");
       isAnimating = true;
     } else {
@@ -126,6 +124,19 @@ export default props => {
   }, []); // Load once on mount
 
   useEffect(() => {
+    if (typeof props.storyState === "undefined") return;
+
+    // Detect whether we are scrolling back up page
+    if (
+      sequences[view][props.storyState].index <
+      sequences[view][animationName].index
+    ) {
+      console.log("Next animation is less than...");
+      nextAnimation = props.storyState;
+      setAnimationName(nextAnimation);
+      return;
+    }
+
     if (!isAnimating) {
       nextAnimation = props.storyState;
       console.log(nextAnimation);
@@ -135,15 +146,6 @@ export default props => {
 
       nextAnimation = props.storyState;
       console.log(nextAnimation);
-
-      // Detect whether we are scrolling back up page
-      if (
-        sequences[view][nextAnimation].index <
-        sequences[view][animationName].index
-      ) {
-        console.log("Next animation is less than...");
-        setAnimationName(nextAnimation);
-      }
     }
   }, [props.storyState]);
 
