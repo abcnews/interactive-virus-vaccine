@@ -29,15 +29,42 @@ const sequences = {
       svg: require("./sequence/vaccine1-3.svg"),
       animation: require("./animations/vaccine1-3")
     },
-    four: require("./sequence/vaccine1-4.svg"),
-    five: require("./sequence/vaccine1-5.svg"),
-    six: require("./sequence/vaccine1-6.svg"),
-    seven: require("./sequence/vaccine1-7.svg"),
-    eight: require("./sequence/vaccine1-8.svg"),
-    nine: require("./sequence/vaccine1-9.svg"),
-    ten: require("./sequence/vaccine1-10.svg"),
-    eleven: require("./sequence/vaccine1-11.svg"),
-    twelve: require("./sequence/vaccine1-12.svg")
+    four: {
+      svg: require("./sequence/vaccine1-4.svg"),
+      animation: require("./animations/vaccine1-4")
+    },
+    five: {
+      svg: require("./sequence/vaccine1-5.svg"),
+      animation: require("./animations/vaccine1-5")
+    },
+    six: {
+      svg: require("./sequence/vaccine1-6.svg"),
+      animation: require("./animations/vaccine1-6")
+    },
+    // seven: {
+    //   svg: require("./sequence/vaccine1-7.svg"),
+    //   animation: require("./animations/vaccine1-7")
+    // },
+    // eight: {
+    //   svg: require("./sequence/vaccine1-8.svg"),
+    //   animation: require("./animations/vaccine1-8")
+    // },
+    // nine: {
+    //   svg: require("./sequence/vaccine1-9.svg"),
+    //   animation: require("./animations/vaccine1-9")
+    // },
+    // ten: {
+    //   svg: require("./sequence/vaccine1-10.svg"),
+    //   animation: require("./animations/vaccine1-10")
+    // },
+    // eleven: {
+    //   svg: require("./sequence/vaccine1-11.svg"),
+    //   animation: require("./animations/vaccine1-11")
+    // },
+    // twelve: {
+    //   svg: require("./sequence/vaccine1-12.svg"),
+    //   animation: require("./animations/vaccine1-12")
+    // }
   }
 };
 
@@ -49,14 +76,12 @@ export default props => {
   const [preload, setPreload] = useState(true);
   const [windowWidth, windowHeight] = useWindowSize();
   const [view, setView] = useState("default");
-  const [animationName, setAnimationName] = useState("two");
+  const [animationName, setAnimationName] = useState("one");
 
   const svgLoaded = () => {
     if (sequences[view][animationName].animation) {
       isAnimating = true;
       tl = sequences[view][animationName].animation(window.ks);
-
-      console.log(tl);
 
       // Fire the animationEnded method on finish
       tl.onfinish = animationEnded;
@@ -72,6 +97,7 @@ export default props => {
     // Only loop if on same animation
     if (animationName !== nextAnimation) return;
 
+    // Check if loop marker is present and if so loop
     if (has(tl, "_options.markers.LoopStart")) {
       console.log("LoopStart present...");
       tl.play("LoopStart");
@@ -94,6 +120,7 @@ export default props => {
       setAnimationName(nextAnimation);
     } else {
       nextAnimation = props.storyState;
+      console.log(nextAnimation);
     }
   }, [props.storyState]);
 
@@ -133,17 +160,15 @@ export default props => {
           <SVG src={sequences[view]["one"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["two"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["three"].svg} uniquifyIDs={true} />
-          {/* <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["three"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["four"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["five"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["six"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["seven"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["eight"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["nine"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["ten"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["eleven"]} uniquifyIDs={true} />
-          <SVG src={sequences[view]["twelve"]} uniquifyIDs={true} /> */}
+          <SVG src={sequences[view]["four"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["five"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["six"].svg} uniquifyIDs={true} />
+          {/* <SVG src={sequences[view]["seven"].svg} uniquifyIDs={true} /> */}
+          {/* <SVG src={sequences[view]["eight"].svg} uniquifyIDs={true} /> */}
+          {/* <SVG src={sequences[view]["nine"].svg} uniquifyIDs={true} /> */}
+          {/* <SVG src={sequences[view]["ten"].svg} uniquifyIDs={true} /> */}
+          {/* <SVG src={sequences[view]["eleven"].svg} uniquifyIDs={true} /> */}
+          {/* <SVG src={sequences[view]["twelve"].svg} uniquifyIDs={true} /> */}
         </div>
       )}
     </div>
