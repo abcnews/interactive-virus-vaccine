@@ -14,7 +14,6 @@ import virus from "./images/virus.svg";
 import { has } from "lodash";
 
 // Load our animation files and JavaScript animations
-const base = "./sequence/";
 const sequences = {
   default: {
     one: {
@@ -76,11 +75,51 @@ const sequences = {
       svg: require("./sequence/vaccine1-12.svg"),
       animation: require("./animations/vaccine1-12"),
       index: 12
+    },
+    thirteen: {
+      svg: require("./sequence/vaccine2-1.svg"),
+      animation: require("./animations/vaccine2-1"),
+      index: 14 - 1
+    },
+    fourteen: {
+      svg: require("./sequence/vaccine2-2.svg"),
+      animation: require("./animations/vaccine2-2"),
+      index: 14
+    },
+    fifteen: {
+      svg: require("./sequence/vaccine2-3.svg"),
+      animation: require("./animations/vaccine2-3"),
+      index: 15
+    },
+    sixteen: {
+      svg: require("./sequence/vaccine2-4.svg"),
+      animation: require("./animations/vaccine2-4"),
+      index: 16
+    },
+    seventeen: {
+      svg: require("./sequence/vaccine3-1.svg"),
+      animation: require("./animations/vaccine3-1"),
+      index: 17
+    },
+    eighteen: {
+      svg: require("./sequence/vaccine3-2.svg"),
+      animation: require("./animations/vaccine3-2"),
+      index: 18
+    },
+    nineteen: {
+      svg: require("./sequence/vaccine3-3.svg"),
+      animation: require("./animations/vaccine3-3"),
+      index: 19
+    },
+    twenty: {
+      svg: require("./sequence/vaccine3-4.svg"),
+      animation: require("./animations/vaccine3-4"),
+      index: 20
     }
   }
 };
 
-let tl;
+let tl = {};
 let isAnimating;
 let nextAnimation;
 
@@ -91,6 +130,8 @@ export default props => {
   const [animationName, setAnimationName] = useState("one");
 
   const svgLoaded = () => {
+    tl.onfinish = undefined; // to remove callback
+
     if (sequences[view][animationName].animation) {
       isAnimating = true;
       tl = sequences[view][animationName].animation(window.ks);
@@ -101,6 +142,7 @@ export default props => {
   };
 
   const animationEnded = () => {
+    console.log("Animation ended...");
     isAnimating = false;
     // Switch to next animation (if different)
     setAnimationName(nextAnimation);
@@ -124,28 +166,34 @@ export default props => {
   }, []); // Load once on mount
 
   useEffect(() => {
+    console.log(props.storyState);
+    nextAnimation = props.storyState;
+
     if (typeof props.storyState === "undefined") return;
+
+    if (!has(sequences, `${view}.${props.storyState}.index`)) {
+      console.log("Don't have it...");
+
+      return;
+    }
 
     // Detect whether we are scrolling back up page
     if (
+      typeof sequences[view][animationName] !== "undefined" &&
       sequences[view][props.storyState].index <
-      sequences[view][animationName].index
+        sequences[view][animationName].index
     ) {
       console.log("Next animation is less than...");
-      nextAnimation = props.storyState;
+
       setAnimationName(nextAnimation);
       return;
     }
 
     if (!isAnimating) {
-      nextAnimation = props.storyState;
-      console.log(nextAnimation);
       setAnimationName(nextAnimation);
     } else {
       // It is animating
-
-      nextAnimation = props.storyState;
-      console.log(nextAnimation);
+      // nextAnimation = props.storyState;
     }
   }, [props.storyState]);
 
@@ -177,6 +225,9 @@ export default props => {
               }}
               // uniquifyIDs={true}
               // uniqueHash={"unique"}
+              onError={error => {
+                console.error(error);
+              }}
             />
           )}
       </div>
@@ -194,6 +245,14 @@ export default props => {
           <SVG src={sequences[view]["ten"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["eleven"].svg} uniquifyIDs={true} />
           <SVG src={sequences[view]["twelve"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["thirteen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["fourteen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["fifteen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["sixteen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["seventeen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["eighteen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["nineteen"].svg} uniquifyIDs={true} />
+          <SVG src={sequences[view]["twenty"].svg} uniquifyIDs={true} />
         </div>
       )}
     </div>
