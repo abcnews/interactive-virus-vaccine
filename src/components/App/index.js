@@ -8,6 +8,8 @@ import Scrollyteller, {
   loadOdysseyScrollyteller
 } from "@abcnews/scrollyteller";
 
+console.log(":|")
+
 const scrollyData = loadOdysseyScrollyteller(
   "", // If set to eg. "one" use #scrollytellerNAMEone in CoreMedia
   "u-full", // Class to apply to mount point u-full makes it full width in Odyssey

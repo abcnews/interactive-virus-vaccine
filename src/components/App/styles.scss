@@ -20,7 +20,14 @@
   }
 }
 
-.worm {
-  width: 240px;
-  height: auto;
+// .worm {
+//   width: 240px;
+//   height: auto;
+// }
+
+:global {
+  
+  body {
+    background-color: #e3f5f5 !important;
+  }
 }

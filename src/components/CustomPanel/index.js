@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import styles from "./styles.scss";
 
@@ -117,7 +117,7 @@ export default props => {
     <div
       className={`${styles.base} ${styles.light} ${
         props.config.scrollout ? styles.scrollout : styles.right
-      } ${props.config.scrollouttop ? styles.scrolloutTop : "" }`}
+      } ${props.config.scrollouttop ? styles.scrolloutTop : ""}`}
     >
       <div className={styles.inner}>
         <div
