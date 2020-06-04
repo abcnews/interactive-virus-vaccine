@@ -76,44 +76,69 @@ const sequences = {
       index: 12
     },
     thirteen: {
-      svg: require("./sequence/vaccine2-1.svg"),
-      animation: require("./animations/vaccine2-1"),
+      svg: require("./sequence/vaccine1-13.svg"),
+      animation: require("./animations/vaccine1-13"),
       index: 14 - 1
     },
     fourteen: {
-      svg: require("./sequence/vaccine2-2.svg"),
-      animation: require("./animations/vaccine2-2"),
+      svg: require("./sequence/vaccine1-14.svg"),
+      animation: require("./animations/vaccine1-14"),
       index: 14
     },
     fifteen: {
-      svg: require("./sequence/vaccine2-3.svg"),
-      animation: require("./animations/vaccine2-3"),
+      svg: require("./sequence/vaccine2-1.svg"),
+      animation: require("./animations/vaccine2-1"),
       index: 15
     },
     sixteen: {
-      svg: require("./sequence/vaccine2-4.svg"),
-      animation: require("./animations/vaccine2-4"),
+      svg: require("./sequence/vaccine2-2.svg"),
+      animation: require("./animations/vaccine2-2"),
       index: 16
     },
     seventeen: {
-      svg: require("./sequence/vaccine3-1.svg"),
-      animation: require("./animations/vaccine3-1"),
+      svg: require("./sequence/vaccine2-3.svg"),
+      animation: require("./animations/vaccine2-3"),
       index: 17
     },
     eighteen: {
-      svg: require("./sequence/vaccine3-2.svg"),
-      animation: require("./animations/vaccine3-2"),
+      svg: require("./sequence/vaccine2-4.svg"),
+      animation: require("./animations/vaccine2-4"),
       index: 18
     },
     nineteen: {
-      svg: require("./sequence/vaccine3-3.svg"),
-      animation: require("./animations/vaccine3-3"),
+      svg: require("./sequence/vaccine3-1.svg"),
+      animation: require("./animations/vaccine3-1"),
       index: 19
     },
     twenty: {
+      svg: require("./sequence/vaccine3-2.svg"),
+      animation: require("./animations/vaccine3-2"),
+      index: 20
+    },
+    twentyone: {
+      svg: require("./sequence/vaccine3-3.svg"),
+      animation: require("./animations/vaccine3-3"),
+      index: 21
+    },
+    twentytwo: {
       svg: require("./sequence/vaccine3-4.svg"),
       animation: require("./animations/vaccine3-4"),
-      index: 20
+      index: 22
+    },
+    twentythree: {
+      svg: require("./sequence/vaccine4-1.svg"),
+      animation: require("./animations/vaccine4-1"),
+      index: 23
+    },
+    twentyfour: {
+      svg: require("./sequence/vaccine4-2.svg"),
+      animation: require("./animations/vaccine4-2"),
+      index: 24
+    },
+    twentyfive: {
+      svg: require("./sequence/vaccine4-3.svg"),
+      animation: require("./animations/vaccine4-3"),
+      index: 25
     }
   }
 };
@@ -212,7 +237,12 @@ export default props => {
                 // INSIDE A G ELEMENT
                 // OK Ben put everything in a g el but it already had
                 // a transform on it. So let's put it in another <g>
-                const topGroupTag = code.replace("</defs><g", "</defs><g><g");
+
+                const openingScriptStripped = code.replace("<script", "<dummy");
+                const closingScriptStripped = openingScriptStripped.replace("</script>", "</dummy>");
+
+
+                const topGroupTag = closingScriptStripped.replace("</defs><g", "</defs><g><g");
                 const position = topGroupTag.lastIndexOf("</g>");
 
                 const output =
