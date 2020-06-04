@@ -19,8 +19,7 @@ const animate = ks => {
       [{ p: "opacity", t: [500, 1000], v: [0, 1], e: [[0], [0]] }],
       { autoremove: false, markers: { LoopStart: 1000 } }
     )
-    .range(1000, 3000)
-    .time(1000);
+    .range(0, 3000);
   if (
     document.location.search
       .substr(1)
