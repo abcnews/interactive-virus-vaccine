@@ -151,7 +151,7 @@ export default props => {
   const [preload, setPreload] = useState(true);
   // const [windowWidth, windowHeight] = useWindowSize();
   const [view, setView] = useState("default");
-  const [animationName, setAnimationName] = useState("one");
+  const [animationName, setAnimationName] = useState();
 
   const svgLoaded = () => {
     tl.onfinish = undefined; // to remove callback
@@ -256,7 +256,7 @@ export default props => {
         {sequences[view][animationName] &&
           sequences[view][animationName]["svg"] && (
             <SVG
-              src={sequences[view][animationName].svg || sequences[view]["one"]}
+              src={sequences[view][animationName].svg}
               onLoad={svgLoaded}
               preProcessor={preProcessSvg}
               // uniquifyIDs={true}
