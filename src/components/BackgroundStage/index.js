@@ -1,4 +1,4 @@
-import "./keyshapejs.js";
+
 if (KeyshapeJS.version.indexOf("1.") != 0)
   throw Error("Expected KeyshapeJS v1.*.*");
 window.ks = document.ks = KeyshapeJS;
@@ -9,7 +9,7 @@ import SVG from "react-inlinesvg";
 
 import styles from "./styles.scss";
 
-// Utility to check 
+// Utility to check
 import { has } from "lodash";
 
 // Load our animation files and JavaScript animations
@@ -78,7 +78,7 @@ const sequences = {
     thirteen: {
       svg: require("./sequence/vaccine1-13.svg"),
       animation: require("./animations/vaccine1-13"),
-      index: 14 - 1
+      index: 13
     },
     fourteen: {
       svg: require("./sequence/vaccine1-14.svg"),
@@ -183,10 +183,36 @@ export default props => {
     }
   };
 
+  const preProcessSvg = code => {
+    // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
+    // INSIDE A G ELEMENT
+    // OK Ben put everything in a g el but it already had
+    // a transform on it. So let's put it in another <g>
+
+    const openingScriptStripped = code.replace(/<script/g, "<dummy");
+    const closingScriptStripped = openingScriptStripped.replace(
+      /<\/script>/g,
+      "</dummy>"
+    );
+
+    const topGroupTag = closingScriptStripped.replace(
+      "</defs><g",
+      "</defs><g><g"
+    );
+    const position = topGroupTag.lastIndexOf("</g>");
+
+    const output =
+      topGroupTag.substring(0, position + 3) +
+      "</g>" +
+      topGroupTag.substring(position + 3);
+
+    return output;
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setPreload(false);
-    }, 2000);
+    }, 5000);
   }, []); // Load once on mount
 
   useEffect(() => {
@@ -232,26 +258,7 @@ export default props => {
             <SVG
               src={sequences[view][animationName].svg || sequences[view]["one"]}
               onLoad={svgLoaded}
-              preProcessor={code => {
-                // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
-                // INSIDE A G ELEMENT
-                // OK Ben put everything in a g el but it already had
-                // a transform on it. So let's put it in another <g>
-
-                const openingScriptStripped = code.replace("<script", "<dummy");
-                const closingScriptStripped = openingScriptStripped.replace("</script>", "</dummy>");
-
-
-                const topGroupTag = closingScriptStripped.replace("</defs><g", "</defs><g><g");
-                const position = topGroupTag.lastIndexOf("</g>");
-
-                const output =
-                  topGroupTag.substring(0, position + 3) +
-                  "</g>" +
-                  topGroupTag.substring(position + 3);
-
-                return output;
-              }}
+              preProcessor={preProcessSvg}
               // uniquifyIDs={true}
               // uniqueHash={"unique"}
               onError={error => {
@@ -262,30 +269,133 @@ export default props => {
       </div>
       {preload && (
         <div className={styles.preload}>
-          <SVG src={sequences[view]["one"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["two"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["three"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["four"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["five"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["six"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["seven"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["eight"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["nine"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["ten"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["eleven"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["twelve"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["thirteen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["fourteen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["fifteen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["sixteen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["seventeen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["eighteen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["nineteen"].svg} uniquifyIDs={true} />
-          <SVG src={sequences[view]["twenty"].svg} uniquifyIDs={true} />
+          <SVG
+            src={sequences[view]["one"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["two"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["three"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["four"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["five"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["six"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["seven"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["eight"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["nine"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["ten"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["eleven"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twelve"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["thirteen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["fourteen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["fifteen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["sixteen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["seventeen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["eighteen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["nineteen"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twenty"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twentyone"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twentytwo"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twentythree"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twentyfour"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twentyfive"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
         </div>
       )}
     </div>
   );
 };
-
-

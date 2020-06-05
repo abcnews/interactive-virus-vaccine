@@ -117,7 +117,9 @@ export default props => {
     <div
       className={`${styles.base} ${styles.light} ${
         props.config.scrollout ? styles.scrollout : styles.right
-      } ${props.config.scrollouttop ? styles.scrolloutTop : ""}`}
+      } ${props.config.scrollouttop ? styles.scrolloutTop : ""} ${
+        props.config.scrolloutbottom ? styles.scrolloutBottom : ""
+      }`}
     >
       <div className={styles.inner}>
         <div

@@ -1,3 +1,4 @@
+import "./keyshapejs.js";
 import "@babel/polyfill";
 
 import React from "react";
