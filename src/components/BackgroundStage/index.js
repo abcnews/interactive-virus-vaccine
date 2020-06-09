@@ -1,4 +1,3 @@
-
 if (KeyshapeJS.version.indexOf("1.") != 0)
   throw Error("Expected KeyshapeJS v1.*.*");
 window.ks = document.ks = KeyshapeJS;
@@ -216,38 +215,46 @@ export default props => {
   }, []); // Load once on mount
 
   useEffect(() => {
-    console.log(props.storyState);
-    nextAnimation = props.storyState;
-
     if (typeof props.storyState === "undefined") return;
 
-    if (!has(sequences, `${view}.${props.storyState}.index`)) {
+    console.log(props.storyState.name);
+    nextAnimation = props.storyState.name;
+
+    if (typeof props.storyState.name === "undefined") return;
+
+    if (!has(sequences, `${view}.${props.storyState.name}.index`)) {
       console.log("Don't have it...");
 
       return;
     }
 
     // Detect whether we are scrolling back up page
+    // and short circuit transition if so
     if (
       typeof sequences[view][animationName] !== "undefined" &&
-      sequences[view][props.storyState].index <
+      sequences[view][props.storyState.name].index <
         sequences[view][animationName].index
     ) {
-      console.log("Next animation is less than...");
-
       setAnimationName(nextAnimation);
       return;
     }
 
+    // Immediately transition behind custom scrollout panel
+    if (props.storyState.event.scrolloutbottom) {
+      setAnimationName(nextAnimation);
+      return;
+    }
+
+    // Transition once animation is complete
     if (!isAnimating) {
       setAnimationName(nextAnimation);
     } else {
       // It is animating
-      // nextAnimation = props.storyState;
+      // nextAnimation = props.storyState.name;
     }
   }, [props.storyState]);
 
-  // TODO: set props.storyState to change the animationName when
+  // TODO: set props.storyState.name to change the animationName when
   // animation reaches the end
 
   return (
