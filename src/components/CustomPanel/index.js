@@ -24,6 +24,24 @@ export default props => {
   const onScroll = () => {
     const windowHeight = window.innerHeight;
 
+    // Hide Scrolly stage if up top or bottom
+    const interactive = document.querySelector(
+      "div[data-interactive-scrollout-root]"
+    );
+    const backgroundStage = document.querySelector(
+      "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
+    );
+
+    const interactiveTop = interactive.getBoundingClientRect().top;
+    const interactiveBottom = interactive.getBoundingClientRect().bottom;
+
+    // TODO: maybe find a better way of doing this
+    if (interactiveTop > -300 || interactiveBottom < windowHeight + 300) {
+      backgroundStage.style.visibility = "hidden";
+    } else {
+      backgroundStage.style.visibility = "visible";
+    }
+
     // Only run on Scrollout panels
     if (!props.config.scrollout) return;
 

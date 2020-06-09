@@ -142,7 +142,7 @@ const sequences = {
     twentysix: {
       svg: require("./sequence/vaccine4-4.svg"),
       animation: require("./animations/vaccine4-4"),
-      index: 25
+      index: 26
     }
   }
 };
@@ -216,7 +216,15 @@ export default props => {
   useEffect(() => {
     setTimeout(() => {
       setPreload(false);
-    }, 5000);
+    }, 3000);
+
+    // Start the background out as hidden
+    // so it doesn't go over the body text
+    const backgroundStage = document.querySelector(
+      "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
+    );
+
+    backgroundStage.style.visibility = "hidden";
   }, []); // Load once on mount
 
   useEffect(() => {
@@ -264,7 +272,7 @@ export default props => {
   // animation reaches the end
 
   return (
-    <div className={`${styles.root}`}>
+    <div className={`${styles.root} ${props.hideStage && styles.hidden}`}>
       <div className={styles.svgContainer}>
         {sequences[view][animationName] &&
           sequences[view][animationName]["svg"] && (
@@ -404,6 +412,11 @@ export default props => {
           />
           <SVG
             src={sequences[view]["twentyfive"].svg}
+            uniquifyIDs={true}
+            preProcessor={preProcessSvg}
+          />
+          <SVG
+            src={sequences[view]["twentysix"].svg}
             uniquifyIDs={true}
             preProcessor={preProcessSvg}
           />
