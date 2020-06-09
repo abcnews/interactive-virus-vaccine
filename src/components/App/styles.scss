@@ -30,4 +30,10 @@
   body {
     background-color: #e0ffff !important;
   }
+
+  div[data-interactive-scrollout-root] > div > div.sgMpdhCf {
+    position: fixed;
+  }
 }
+
+

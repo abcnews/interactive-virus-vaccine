@@ -138,6 +138,11 @@ const sequences = {
       svg: require("./sequence/vaccine4-3.svg"),
       animation: require("./animations/vaccine4-3"),
       index: 25
+    },
+    twentysix: {
+      svg: require("./sequence/vaccine4-4.svg"),
+      animation: require("./animations/vaccine4-4"),
+      index: 25
     }
   }
 };
@@ -217,7 +222,8 @@ export default props => {
   useEffect(() => {
     if (typeof props.storyState === "undefined") return;
 
-    console.log(props.storyState.name);
+    console.log(props.storyState);
+
     nextAnimation = props.storyState.name;
 
     if (typeof props.storyState.name === "undefined") return;
@@ -258,7 +264,7 @@ export default props => {
   // animation reaches the end
 
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root}`}>
       <div className={styles.svgContainer}>
         {sequences[view][animationName] &&
           sequences[view][animationName]["svg"] && (
