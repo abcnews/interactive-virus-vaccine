@@ -349,10 +349,15 @@ $fade-height: 50vh;
 //   height: 0;
 // }
 
-// This is to prevent extra paragraph spacing
+
 :global {
+  // This is to prevent extra paragraph spacing
   .u-full {
-    margin-top: 2rem !important;
-    margin-bottom: 2rem !important;
+    // margin-top: 2rem !important;
+    // margin-bottom: 2rem !important;
+  }
+
+  .inline-content.html-fragment {
+    margin-bottom: 0 !important;
   }
 }

@@ -4,6 +4,7 @@ import styles from "./styles.scss";
 
 // How far into the page before full opacity
 const FADE_THRESHOLD = 400;
+const HIDE_THRESHOLD = 500;
 
 // How far to remain invisible
 const FADE_OFFSET = 100;
@@ -36,7 +37,7 @@ export default props => {
     const interactiveBottom = interactive.getBoundingClientRect().bottom;
 
     // TODO: maybe find a better way of doing this
-    if (interactiveTop > -300 || interactiveBottom < windowHeight + 300) {
+    if (interactiveTop > -HIDE_THRESHOLD || interactiveBottom < windowHeight + HIDE_THRESHOLD) {
       backgroundStage.style.visibility = "hidden";
     } else {
       backgroundStage.style.visibility = "visible";
