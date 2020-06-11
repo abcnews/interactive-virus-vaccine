@@ -5,6 +5,8 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
 
+console.log(":)")
+
 const PROJECT_NAME = "interactive-scrollout";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
@@ -36,3 +38,4 @@ if (module.hot) {
 if (process.env.NODE_ENV === "development") {
   console.debug(`[${PROJECT_NAME}] public path: ${__webpack_public_path__}`);
 }
+

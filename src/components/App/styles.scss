@@ -34,6 +34,17 @@
   div[data-interactive-scrollout-root] > div > div.sgMpdhCf {
     position: fixed;
   }
+
+  .Header-content h1 {
+    display: none;
+  }
+
+  .Header-media:after {
+    // height: 8.25rem;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      #e0ffff 100%
+    );
+  }
 }
-
-

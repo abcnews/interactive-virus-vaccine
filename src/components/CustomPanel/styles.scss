@@ -241,6 +241,12 @@ $fade-height: 50vh;
     margin-bottom: 2.25rem;
     text-transform: unset;
     color: black;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.294117647;
 
     &::before {
       content: "";
@@ -308,6 +314,14 @@ $fade-height: 50vh;
         font-size: 1.125rem;
       }
 
+      h2 {
+        font-size: 1.875rem;
+
+        &::before {
+          margin: 3rem auto 1rem;
+        }
+      }
+
       h3 {
         width: 100%;
       }
@@ -318,6 +332,8 @@ $fade-height: 50vh;
 .scrollout-bottom {
   margin-top: 0 !important;
   padding-top: 0;
+
+  transform: translateY(-1px);
 
   .inner {
     padding-top: 0;
@@ -348,7 +364,6 @@ $fade-height: 50vh;
 //   visibility: hidden;
 //   height: 0;
 // }
-
 
 :global {
   // This is to prevent extra paragraph spacing
