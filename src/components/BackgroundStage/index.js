@@ -188,27 +188,32 @@ export default props => {
   };
 
   const preProcessSvg = code => {
-    // TODO: MAYBE MAKE THIS WORK OR JUST GET BEN TO PUT EVERYTHING
-    // INSIDE A G ELEMENT
-    // OK Ben put everything in a g el but it already had
-    // a transform on it. So let's put it in another <g>
-
+    // We don't want the script running inside the SVGs
+    /// so let's replace it with a dummy tag
     const openingScriptStripped = code.replace(/<script/g, "<dummy");
     const closingScriptStripped = openingScriptStripped.replace(
       /<\/script>/g,
       "</dummy>"
     );
 
+    // Put everything inside another g tag
+    // so we can more easily position it
     const topGroupTag = closingScriptStripped.replace(
       "</defs><g",
       "</defs><g><g"
     );
     const position = topGroupTag.lastIndexOf("</g>");
 
-    const output =
+    const lastGroupTag =
       topGroupTag.substring(0, position + 3) +
       "</g>" +
       topGroupTag.substring(position + 3);
+
+    // If we are on Desktop tweak font size
+    const output =
+      window.innerWidth > 900
+        ? lastGroupTag.replace(/font-size="18"/g, 'font-size="15"')
+        : lastGroupTag;
 
     return output;
   };
