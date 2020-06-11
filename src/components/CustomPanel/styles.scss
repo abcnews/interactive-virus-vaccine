@@ -222,6 +222,30 @@ $fade-height: 50vh;
   .panel {
     width: 61.25rem;
     margin: auto;
+
+    :global(div.ImageEmbed) {
+      width: 100% !important;
+      margin-bottom: 2.25rem !important;
+
+      @media only screen and (max-width: 900px) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+
+      :global(p.Caption) {
+        width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-top: 0.45rem !important;
+        padding-bottom: 0.4rem !important;
+        font-family: "ABCSans", Helvetica, Arial, sans-serif;
+
+        @media only screen and (max-width: 900px) {
+          padding-left: 0.9375rem !important;
+          padding-right: 0.9375rem !important;
+        }
+      }
+    }
   }
 
   p {
