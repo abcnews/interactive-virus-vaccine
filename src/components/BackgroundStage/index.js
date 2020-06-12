@@ -170,7 +170,6 @@ export default props => {
   };
 
   const animationEnded = () => {
-    console.log("Animation ended...");
     isAnimating = false;
     // Switch to next animation (if different)
     setAnimationName(nextAnimation);
@@ -183,7 +182,7 @@ export default props => {
       tl.play("LoopStart");
       isAnimating = true;
     } else {
-      console.log("No loop");
+      // No loop
     }
   };
 
@@ -235,15 +234,12 @@ export default props => {
   useEffect(() => {
     if (typeof props.storyState === "undefined") return;
 
-    console.log(props.storyState);
-
     nextAnimation = props.storyState.name;
 
     if (typeof props.storyState.name === "undefined") return;
 
     if (!has(sequences, `${view}.${props.storyState.name}.index`)) {
-      console.log("Don't have it...");
-
+      // Animation not defined
       return;
     }
 

@@ -4,8 +4,7 @@ import "@babel/polyfill";
 import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
-
-console.log(":)")
+import jankdefer from "jankdefer";
 
 const PROJECT_NAME = "interactive-scrollout";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
@@ -20,7 +19,15 @@ function init() {
   render(<App projectName={PROJECT_NAME} />, root);
 }
 
-init();
+// Use Ash Kyd's handy function to
+// stop jank and load header hero first before loading
+// the rest of the page.
+jankdefer(init, {
+  framerateTarget: 50,
+  timeout: 4000,
+  threshold: 5,
+  debug: false
+});
 
 if (module.hot) {
   module.hot.accept("./components/App", () => {
@@ -38,4 +45,3 @@ if (module.hot) {
 if (process.env.NODE_ENV === "development") {
   console.debug(`[${PROJECT_NAME}] public path: ${__webpack_public_path__}`);
 }
-

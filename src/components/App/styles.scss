@@ -39,16 +39,16 @@
     display: none;
   }
 
+  div[data-component="OdysseyParallax_App"] {
+    background: #e0ffff;
+  }
+
   .Header-media:after {
     // height: 8.25rem;
     background-image: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0) 0%,
       #e0ffff 100%
-    );
-  }
-
-  div[data-component="OdysseyParallax_App"] {
-    background: #e0ffff;
+    ) !important;
   }
 }
