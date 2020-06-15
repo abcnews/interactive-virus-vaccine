@@ -165,58 +165,17 @@ $fade-height: 50vh;
 
   margin-top: -($fade-height * 0.8);
   margin-bottom: -($fade-height * 0.8);
-  padding-top: $fade-height;
-  padding-bottom: $fade-height;
+  padding-top: $fade-height * 0.8;
+  padding-bottom: $fade-height * 0.8;
 
   width: 100%;
   background-color: hsla(180, 100%, 94%, 0);
-  background-image: linear-gradient(
-      to bottom,
-      hsla(180, 100%, 94%, 0) $fade-height * 0,
-      hsla(180, 100%, 94%, 0.013) $fade-height * 0.081,
-      hsla(180, 100%, 94%, 0.049) $fade-height * 0.155,
-      hsla(180, 100%, 94%, 0.104) $fade-height * 0.225,
-      hsla(180, 100%, 94%, 0.175) $fade-height * 0.29,
-      hsla(180, 100%, 94%, 0.259) $fade-height * 0.353,
-      hsla(180, 100%, 94%, 0.352) $fade-height * 0.412,
-      hsla(180, 100%, 94%, 0.45) $fade-height * 0.471,
-      hsla(180, 100%, 94%, 0.55) $fade-height * 0.529,
-      hsla(180, 100%, 94%, 0.648) $fade-height * 0.588,
-      hsla(180, 100%, 94%, 0.741) $fade-height * 0.647,
-      hsla(180, 100%, 94%, 0.825) $fade-height * 0.71,
-      hsla(180, 100%, 94%, 0.896) $fade-height * 0.775,
-      hsla(180, 100%, 94%, 0.951) $fade-height * 0.845,
-      hsla(180, 100%, 94%, 0.987) $fade-height * 0.919,
-      hsl(180, 100%, 94%) $fade-height * 1,
-      hsla(180, 100%, 94%, 1) $fade-height * 1.1,
-      hsla(180, 100%, 94%, 0) 100%
-    ),
-    linear-gradient(
-      to top,
-      hsla(180, 100%, 94%, 0) $fade-height * 0,
-      hsla(180, 100%, 94%, 0.013) $fade-height * 0.081,
-      hsla(180, 100%, 94%, 0.049) $fade-height * 0.155,
-      hsla(180, 100%, 94%, 0.104) $fade-height * 0.225,
-      hsla(180, 100%, 94%, 0.175) $fade-height * 0.29,
-      hsla(180, 100%, 94%, 0.259) $fade-height * 0.353,
-      hsla(180, 100%, 94%, 0.352) $fade-height * 0.412,
-      hsla(180, 100%, 94%, 0.45) $fade-height * 0.471,
-      hsla(180, 100%, 94%, 0.55) $fade-height * 0.529,
-      hsla(180, 100%, 94%, 0.648) $fade-height * 0.588,
-      hsla(180, 100%, 94%, 0.741) $fade-height * 0.647,
-      hsla(180, 100%, 94%, 0.825) $fade-height * 0.71,
-      hsla(180, 100%, 94%, 0.896) $fade-height * 0.775,
-      hsla(180, 100%, 94%, 0.951) $fade-height * 0.845,
-      hsla(180, 100%, 94%, 0.987) $fade-height * 0.919,
-      hsl(180, 100%, 94%) $fade-height * 1,
-      hsla(180, 100%, 94%, 1) $fade-height * 1.1,
-      hsla(180, 100%, 94%, 0) 100%
-    );
+  
 
   .inner {
-    background-color: #e0ffffff;
-    padding-top: 4em;
-    padding-bottom: 4em;
+    // background-color: #e0ffffff;
+    // padding-top: 4em;
+    // padding-bottom: 4em;
   }
 
   .panel {
@@ -262,7 +221,7 @@ $fade-height: 50vh;
     text-align: center;
     padding-bottom: 1rem;
     font-size: 2.25rem;
-    margin-bottom: 2.25rem;
+    margin-bottom: 0rem;
     text-transform: unset;
     color: black;
     padding-left: 0.875rem;
@@ -283,7 +242,7 @@ $fade-height: 50vh;
   }
 
   h3 {
-    font-family: "ABCSans", Helvetica, Arial, sans-serif;
+    font-family: "ABCSerif", serif;
     font-weight: bold;
     color: black;
     line-height: 1.294117647;
@@ -348,6 +307,7 @@ $fade-height: 50vh;
 
       h3 {
         width: 100%;
+        font-size: 20px;
       }
     }
   }
@@ -362,6 +322,28 @@ $fade-height: 50vh;
   .inner {
     padding-top: 0;
   }
+
+  background-image: linear-gradient(
+    to top,
+    hsla(180, 100%, 94%, 0) $fade-height * 0,
+    hsla(180, 100%, 94%, 0.013) $fade-height * 0.081,
+    hsla(180, 100%, 94%, 0.049) $fade-height * 0.155,
+    hsla(180, 100%, 94%, 0.104) $fade-height * 0.225,
+    hsla(180, 100%, 94%, 0.175) $fade-height * 0.29,
+    hsla(180, 100%, 94%, 0.259) $fade-height * 0.353,
+    hsla(180, 100%, 94%, 0.352) $fade-height * 0.412,
+    hsla(180, 100%, 94%, 0.45) $fade-height * 0.471,
+    hsla(180, 100%, 94%, 0.55) $fade-height * 0.529,
+    hsla(180, 100%, 94%, 0.648) $fade-height * 0.588,
+    hsla(180, 100%, 94%, 0.741) $fade-height * 0.647,
+    hsla(180, 100%, 94%, 0.825) $fade-height * 0.71,
+    hsla(180, 100%, 94%, 0.896) $fade-height * 0.775,
+    hsla(180, 100%, 94%, 0.951) $fade-height * 0.845,
+    hsla(180, 100%, 94%, 0.987) $fade-height * 0.919,
+    hsl(180, 100%, 94%) $fade-height * 1,
+    hsla(180, 100%, 94%, 1) $fade-height * 1.1,
+    hsla(180, 100%, 94%, 1) 100%
+  );
 }
 
 .scrollout-top {
@@ -379,6 +361,28 @@ $fade-height: 50vh;
       margin-bottom: 0;
     }
   }
+
+  background-image: linear-gradient(
+    to bottom,
+    hsla(180, 100%, 94%, 0) $fade-height * 0,
+    hsla(180, 100%, 94%, 0.013) $fade-height * 0.081,
+    hsla(180, 100%, 94%, 0.049) $fade-height * 0.155,
+    hsla(180, 100%, 94%, 0.104) $fade-height * 0.225,
+    hsla(180, 100%, 94%, 0.175) $fade-height * 0.29,
+    hsla(180, 100%, 94%, 0.259) $fade-height * 0.353,
+    hsla(180, 100%, 94%, 0.352) $fade-height * 0.412,
+    hsla(180, 100%, 94%, 0.45) $fade-height * 0.471,
+    hsla(180, 100%, 94%, 0.55) $fade-height * 0.529,
+    hsla(180, 100%, 94%, 0.648) $fade-height * 0.588,
+    hsla(180, 100%, 94%, 0.741) $fade-height * 0.647,
+    hsla(180, 100%, 94%, 0.825) $fade-height * 0.71,
+    hsla(180, 100%, 94%, 0.896) $fade-height * 0.775,
+    hsla(180, 100%, 94%, 0.951) $fade-height * 0.845,
+    hsla(180, 100%, 94%, 0.987) $fade-height * 0.919,
+    hsl(180, 100%, 94%) $fade-height * 1,
+    hsla(180, 100%, 94%, 1) $fade-height * 1.1,
+    hsla(180, 100%, 94%, 1) 100%
+  );
 }
 
 // Let's make a hidden panel that can trigger a mark
