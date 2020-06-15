@@ -34,14 +34,8 @@ export default props => {
         else panelsOnScreen = panelsOnScreen - 1;
       }
 
-      console.log(entry);
-      console.log(panelsOnScreen);
-
-      if (panelsOnScreen < 1) {
-        setShowStage(false);
-      } else {
-        setShowStage(true);
-      }
+      if (panelsOnScreen < 1) setShowStage(false);
+      else setShowStage(true);
 
       // Each entry describes an intersection change for one observed
       // target element:
@@ -68,10 +62,6 @@ export default props => {
       observer.observe(panel);
     });
   }, []);
-
-  useEffect(() => {
-    console.log(panelsOnScreen);
-  });
 
   return (
     <Scrollyteller

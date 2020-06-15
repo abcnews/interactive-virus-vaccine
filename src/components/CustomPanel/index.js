@@ -7,7 +7,6 @@ import styles from "./styles.scss";
 const TOP_HIDE_THRESHOLD = 100;
 const BOTTOM_HIDE_THRESHOLD = 500;
 
-
 // How far into the page before full opacity
 const FADE_THRESHOLD = 400;
 // How far to remain invisible
@@ -29,7 +28,7 @@ export default props => {
   const onScroll = () => {
     const windowHeight = window.innerHeight;
 
-    // Hide Scrolly stage if up top or bottom
+    // // Hide Scrolly stage if up top or bottom
     const interactive = document.querySelector(
       "div[data-interactive-scrollout-root]"
     );
@@ -57,9 +56,9 @@ export default props => {
     const top = base.current.getBoundingClientRect().top;
     const bottom = base.current.getBoundingClientRect().bottom;
 
-    // If panel is off screen make it invisible and do nothing else
+    // If panel is off screen just fade it and do nothing else
     if (bottom < 0 || top > windowHeight) {
-      setOpacity(0.0);
+      setOpacity(0.1);
       return;
     }
 
@@ -142,7 +141,9 @@ export default props => {
   return (
     <div
       className={`${styles.base} ${styles.light} ${
-        props.config.scrollout ? `${styles.scrollout} custom-scrollout-outer` : styles.right
+        props.config.scrollout
+          ? `${styles.scrollout} custom-scrollout-outer`
+          : styles.right
       } ${props.config.scrollouttop ? styles.scrolloutTop : ""} ${
         props.config.scrolloutbottom ? styles.scrolloutBottom : ""
       }`}
@@ -150,7 +151,9 @@ export default props => {
       <div className={styles.inner}>
         <div
           className={`${
-            props.config.scrollout ? "custom-scrollout-panel" : "custom-normal-panel"
+            props.config.scrollout
+              ? "custom-scrollout-panel"
+              : "custom-normal-panel"
           } ${styles.panel}`}
           ref={base}
           style={{ opacity: opacity }}

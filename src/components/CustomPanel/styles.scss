@@ -363,7 +363,7 @@ $fade-height: 50vh;
     :global(.Quote.is-pullquote p) {
       font-size: 1.875rem;
       line-height: 1.4;
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.25rem !important;
       padding-bottom: 0;
     }
 
