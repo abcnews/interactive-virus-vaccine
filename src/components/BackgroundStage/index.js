@@ -12,7 +12,7 @@ import styles from "./styles.scss";
 import { has } from "lodash";
 
 // Load our animation files and JavaScript animations
-import sequences from "./sequences"
+import sequences from "./sequences";
 
 let tl = {};
 let isAnimating;
@@ -84,6 +84,8 @@ export default props => {
     return output;
   };
 
+  
+
   useEffect(() => {
     setTimeout(() => {
       setPreload(false);
@@ -95,6 +97,8 @@ export default props => {
       "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
     );
 
+    // Start off invisible so we don't have to wait
+    // for Custom panel scroll
     backgroundStage.style.visibility = "hidden";
   }, []); // Load once on mount
 
