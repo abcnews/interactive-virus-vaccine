@@ -2,13 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 
 import styles from "./styles.scss";
 
-// How far into the page before full opacity
-const FADE_THRESHOLD = 400;
+// Controls how far off the screen the top and bottom
+// panels are before the background stage is hidden
 const TOP_HIDE_THRESHOLD = 100;
 const BOTTOM_HIDE_THRESHOLD = 500;
 
+
+// How far into the page before full opacity
+const FADE_THRESHOLD = 400;
 // How far to remain invisible
-const FADE_OFFSET = 100;
+const FADE_OFFSET = -10;
 
 const d3 = { ...require("d3-scale") };
 
@@ -139,7 +142,7 @@ export default props => {
   return (
     <div
       className={`${styles.base} ${styles.light} ${
-        props.config.scrollout ? styles.scrollout : styles.right
+        props.config.scrollout ? `${styles.scrollout} custom-scrollout-outer` : styles.right
       } ${props.config.scrollouttop ? styles.scrolloutTop : ""} ${
         props.config.scrolloutbottom ? styles.scrolloutBottom : ""
       }`}
