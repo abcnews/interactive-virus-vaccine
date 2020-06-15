@@ -84,8 +84,6 @@ export default props => {
     return output;
   };
 
-  
-
   useEffect(() => {
     setTimeout(() => {
       setPreload(false);
@@ -140,26 +138,25 @@ export default props => {
     }
   }, [props.storyState]);
 
-  // TODO: set props.storyState.name to change the animationName when
-  // animation reaches the end
-
   return (
-    <div className={`${styles.root} ${props.hideStage && styles.hidden}`}>
-      <div className={styles.svgContainer}>
-        {sequences[view][animationName] &&
-          sequences[view][animationName]["svg"] && (
-            <SVG
-              src={sequences[view][animationName].svg}
-              onLoad={svgLoaded}
-              preProcessor={preProcessSvg}
-              // uniquifyIDs={true}
-              // uniqueHash={"unique"}
-              onError={error => {
-                console.error(error);
-              }}
-            />
-          )}
-      </div>
+    <div className={`${styles.root}`}>
+      {props.showStage && (
+        <div className={styles.svgContainer}>
+          {sequences[view][animationName] &&
+            sequences[view][animationName]["svg"] && (
+              <SVG
+                src={sequences[view][animationName].svg}
+                onLoad={svgLoaded}
+                preProcessor={preProcessSvg}
+                // uniquifyIDs={true}
+                // uniqueHash={"unique"}
+                onError={error => {
+                  console.error(error);
+                }}
+              />
+            )}
+        </div>
+      )}
       {preload && (
         <div className={styles.preload}>
           <SVG

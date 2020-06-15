@@ -150,7 +150,7 @@ export default props => {
       <div className={styles.inner}>
         <div
           className={`${
-            props.config.scrollout ? "custom-scrollout-panel" : ""
+            props.config.scrollout ? "custom-scrollout-panel" : "custom-normal-panel"
           } ${styles.panel}`}
           ref={base}
           style={{ opacity: opacity }}

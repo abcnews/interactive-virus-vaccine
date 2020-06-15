@@ -15,9 +15,11 @@ const scrollyData = loadOdysseyScrollyteller(
 );
 
 let observer;
+let panelsOnScreen = 0;
 
 export default props => {
   const [storyState, setStoryState] = useState();
+  const [showStage, setShowStage] = useState(false);
 
   const processMarker = (event, test) => {
     setStoryState({ name: event.key, event: event });
@@ -25,7 +27,22 @@ export default props => {
 
   const doObserved = (entries, observer) => {
     entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        panelsOnScreen = panelsOnScreen + 1;
+      } else if (!entry.isIntersecting) {
+        if (panelsOnScreen === 0) panelsOnScreen = 0;
+        else panelsOnScreen = panelsOnScreen - 1;
+      }
+
       console.log(entry);
+      console.log(panelsOnScreen);
+
+      if (panelsOnScreen < 1) {
+        setShowStage(false);
+      } else {
+        setShowStage(true);
+      }
+
       // Each entry describes an intersection change for one observed
       // target element:
       //   entry.boundingClientRect
@@ -41,18 +58,20 @@ export default props => {
   useEffect(() => {
     observer = new IntersectionObserver(doObserved, {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.0
+      rootMargin: `${window.innerHeight * 0.6}px 0px`,
+      threshold: 0.1
     });
 
-    const scrolloutPanels = document.querySelectorAll(
-      ".custom-scrollout-panel"
-    );
+    const scrolloutPanels = document.querySelectorAll(".custom-normal-panel");
 
     scrolloutPanels.forEach(panel => {
       observer.observe(panel);
     });
   }, []);
+
+  useEffect(() => {
+    console.log(panelsOnScreen);
+  });
 
   return (
     <Scrollyteller
@@ -60,7 +79,7 @@ export default props => {
       onMarker={processMarker}
       panelComponent={CustomPanel}
     >
-      <BackgroundStage storyState={storyState} />
+      <BackgroundStage storyState={storyState} showStage={showStage} />
     </Scrollyteller>
   );
 };

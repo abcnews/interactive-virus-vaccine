@@ -32,7 +32,14 @@ jankdefer(init, {
 if (module.hot) {
   module.hot.accept("./components/App", () => {
     try {
-      init();
+      if (window.__ODYSSEY__) {
+        init(window.__ODYSSEY__);
+      } else {
+        window.addEventListener('odyssey:api', e => {
+          init(e.detail);
+        });
+      }
+      
     } catch (err) {
       import("./components/ErrorBox").then(exports => {
         const ErrorBox = exports.default;

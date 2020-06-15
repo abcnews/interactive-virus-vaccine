@@ -170,7 +170,6 @@ $fade-height: 50vh;
 
   width: 100%;
   background-color: hsla(180, 100%, 94%, 0);
-  
 
   .inner {
     // background-color: #e0ffffff;
@@ -360,6 +359,23 @@ $fade-height: 50vh;
     .panel p:last-of-type {
       margin-bottom: 0;
     }
+
+    :global(.Quote.is-pullquote p) {
+      font-size: 1.875rem;
+      line-height: 1.4;
+      margin-bottom: 2.25rem;
+      padding-bottom: 0;
+    }
+
+    @media only screen and (max-width: 900px) {
+
+    :global(.Quote.is-pullquote p) {
+      font-size: 1.625rem;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+
+  }
   }
 
   background-image: linear-gradient(
