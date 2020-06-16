@@ -15,8 +15,16 @@ const embed = document.querySelector(".embed-fragment");
 if (fragment) fragment.className = "inline-content html-fragment full u-full";
 if (embed) embed.className = "embed-fragment u-full";
 
-function init() {
+function renderApp() {
   render(<App projectName={PROJECT_NAME} />, root);
+}
+
+function init() {
+  if (window.__ODYSSEY__) {
+    renderApp();
+  } else {
+    window.addEventListener("odyssey:api", renderApp);
+  }
 }
 
 // Use Ash Kyd's handy function to
@@ -32,14 +40,7 @@ jankdefer(init, {
 if (module.hot) {
   module.hot.accept("./components/App", () => {
     try {
-      if (window.__ODYSSEY__) {
-        init(window.__ODYSSEY__);
-      } else {
-        window.addEventListener('odyssey:api', e => {
-          init(e.detail);
-        });
-      }
-      
+      renderApp();
     } catch (err) {
       import("./components/ErrorBox").then(exports => {
         const ErrorBox = exports.default;
