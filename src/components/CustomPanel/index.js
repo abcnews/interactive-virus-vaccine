@@ -35,16 +35,15 @@ export default props => {
     const backgroundStage = document.querySelector(
       "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
     );
-    const firstCustomPanel = document.querySelector(".custom-scrollout-outer");
 
-    const interactiveTop = interactive.getBoundingClientRect().top;
+    // const interactiveTop = interactive.getBoundingClientRect().top;
     const interactiveBottom = interactive.getBoundingClientRect().bottom;
-    const firstCustomPanelBottom = firstCustomPanel.getBoundingClientRect().bottom;
 
     // TODO: maybe find a better way of doing this
     if (
       // interactiveTop > -TOP_HIDE_THRESHOLD ||
-      interactiveBottom < windowHeight + BOTTOM_HIDE_THRESHOLD
+      interactiveBottom <
+      windowHeight + BOTTOM_HIDE_THRESHOLD
     ) {
       backgroundStage.style.visibility = "hidden";
     } else {
@@ -59,7 +58,7 @@ export default props => {
     const bottom = base.current.getBoundingClientRect().bottom;
 
     // If panel is off screen just fade it and do nothing else
-    if (bottom < 0 || top > windowHeight && !props.config.scrolloutbottom) {
+    if (bottom < 0 || (top > windowHeight && !props.config.scrolloutbottom)) {
       setOpacity(0.1);
       return;
     }

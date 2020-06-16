@@ -64,10 +64,20 @@ export default props => {
 
     // Put everything inside another g tag
     // so we can more easily position it
-    const topGroupTag = closingScriptStripped.replace(
-      "</defs><g",
-      "</defs><g><g"
-    );
+    let topGroupTag;
+
+    // Hack for IE11
+    const isIE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
+
+    if (isIE11 && window.innerWidth > 1023) {
+      topGroupTag = closingScriptStripped.replace(
+        "</defs><g",
+        `</defs><g transform="translate(-${window.innerWidth * 0.2},0)"><g`
+      );
+    } else {
+      topGroupTag = closingScriptStripped.replace("</defs><g", `</defs><g><g`);
+    }
+
     const position = topGroupTag.lastIndexOf("</g>");
 
     const lastGroupTag =
@@ -100,6 +110,16 @@ export default props => {
     // Start off invisible so we don't have to wait
     // for Custom panel scroll
     backgroundStage.style.visibility = "hidden";
+
+    // IE11 doesn't translate vw so let's hack a solution
+    // NO WAIT THIS WON'T WORK BECAUSE SVG NOT ON THERE INITIALLY
+    // const isIE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
+
+    // if (isIE11 && window.innerWidth > 1023) {
+    //   const container = document.querySelector(`.${styles.svgContainer} svg > g`);
+
+    //   container.style.transform = `translateX(${window.innerWidth * 0.2}px)`;
+    // }
   }, []); // Load once on mount
 
   useEffect(() => {
