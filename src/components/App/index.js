@@ -42,7 +42,6 @@ export default props => {
   };
 
   useEffect(() => {
-    console.log(document.scrollingElement);
     observer = new IntersectionObserver(doObserved, {
       root: document,
       rootMargin: `${window.innerHeight * 0.6}px 0px`,
