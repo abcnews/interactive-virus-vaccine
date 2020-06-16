@@ -85,6 +85,8 @@ export default props => {
   };
 
   useEffect(() => {
+    // TODO: maybe find a better way
+    // but this seems to work pretty well for now
     setTimeout(() => {
       setPreload(false);
     }, 3000);

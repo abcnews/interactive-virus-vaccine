@@ -4,7 +4,7 @@ import styles from "./styles.scss";
 
 // Controls how far off the screen the top and bottom
 // panels are before the background stage is hidden
-const TOP_HIDE_THRESHOLD = 100;
+const TOP_HIDE_THRESHOLD = 10;
 const BOTTOM_HIDE_THRESHOLD = 500;
 
 // How far into the page before full opacity
@@ -41,7 +41,7 @@ export default props => {
 
     // TODO: maybe find a better way of doing this
     if (
-      interactiveTop > -TOP_HIDE_THRESHOLD ||
+      // interactiveTop > -TOP_HIDE_THRESHOLD ||
       interactiveBottom < windowHeight + BOTTOM_HIDE_THRESHOLD
     ) {
       backgroundStage.style.visibility = "hidden";

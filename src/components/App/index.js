@@ -50,10 +50,11 @@ export default props => {
   };
 
   useEffect(() => {
+    console.log(document.scrollingElement)
     observer = new IntersectionObserver(doObserved, {
-      root: null,
+      root: document,
       rootMargin: `${window.innerHeight * 0.6}px 0px`,
-      threshold: 0.1
+      threshold: 0.0
     });
 
     const scrolloutPanels = document.querySelectorAll(".custom-normal-panel");
