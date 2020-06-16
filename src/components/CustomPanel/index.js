@@ -35,9 +35,11 @@ export default props => {
     const backgroundStage = document.querySelector(
       "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
     );
+    const firstCustomPanel = document.querySelector(".custom-scrollout-outer");
 
     const interactiveTop = interactive.getBoundingClientRect().top;
     const interactiveBottom = interactive.getBoundingClientRect().bottom;
+    const firstCustomPanelBottom = firstCustomPanel.getBoundingClientRect().bottom;
 
     // TODO: maybe find a better way of doing this
     if (

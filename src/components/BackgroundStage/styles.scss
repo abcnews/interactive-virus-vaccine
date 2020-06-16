@@ -17,7 +17,7 @@
 
     @media only screen and (min-width: 1023px) {
       > g {
-        transform: translateX(-20vw);
+        transform: translate3d(-20vw, 0, 0);
       }
     }
   }
