@@ -57,7 +57,7 @@ export default props => {
     const bottom = base.current.getBoundingClientRect().bottom;
 
     // If panel is off screen just fade it and do nothing else
-    if (bottom < 0 || top > windowHeight) {
+    if (bottom < 0 || top > windowHeight && !props.config.scrolloutbottom) {
       setOpacity(0.1);
       return;
     }

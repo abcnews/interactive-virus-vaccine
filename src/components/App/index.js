@@ -43,7 +43,9 @@ export default props => {
 
   useEffect(() => {
     observer = new IntersectionObserver(doObserved, {
-      root: document,
+      // TODO: test for Chrome or Firefox and make this 'document'
+      // as the root to fix nucwed preview mobile
+      root: null,
       rootMargin: `${window.innerHeight * 0.6}px 0px`,
       threshold: 0.0
     });
@@ -57,7 +59,7 @@ export default props => {
 
   return (
     <Scrollyteller
-      panels={props.scrollyData.panels}
+      panels={props.scrollyData && props.scrollyData.panels}
       onMarker={processMarker}
       panelComponent={CustomPanel}
     >
