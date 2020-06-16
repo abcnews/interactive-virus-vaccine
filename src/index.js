@@ -5,6 +5,7 @@ import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
 import jankdefer from "jankdefer";
+import { loadOdysseyScrollyteller } from "@abcnews/scrollyteller";
 
 const PROJECT_NAME = "interactive-scrollout";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
@@ -15,8 +16,14 @@ const embed = document.querySelector(".embed-fragment");
 if (fragment) fragment.className = "inline-content html-fragment full u-full";
 if (embed) embed.className = "embed-fragment u-full";
 
+let scrollyData;
+
 function renderApp() {
-  render(<App projectName={PROJECT_NAME} />, root);
+  if (!scrollyData) {
+    scrollyData = loadOdysseyScrollyteller("", "u-full", "mark");
+  }
+
+  render(<App scrollyData={scrollyData} />, root);
 }
 
 function init() {
