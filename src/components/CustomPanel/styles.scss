@@ -135,7 +135,7 @@ $fade-height: 50vh;
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 43.75rem) {
   .base {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -185,7 +185,7 @@ $fade-height: 50vh;
       width: 100% !important;
       margin-bottom: 2.25rem !important;
 
-      @media only screen and (max-width: 900px) {
+      @media only screen and (max-width: 43.75rem) {
         padding-left: 0 !important;
         padding-right: 0 !important;
       }
@@ -198,7 +198,7 @@ $fade-height: 50vh;
         padding-bottom: 0.4rem !important;
         font-family: "ABCSans", Helvetica, Arial, sans-serif;
 
-        @media only screen and (max-width: 900px) {
+        @media only screen and (max-width: 43.75rem) {
           padding-left: 0.9375rem !important;
           padding-right: 0.9375rem !important;
         }
@@ -279,7 +279,7 @@ $fade-height: 50vh;
     background-repeat: no-repeat;
   }
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 43.75rem) {
     .panel {
       width: 100% !important;
 
@@ -307,6 +307,20 @@ $fade-height: 50vh;
       h3 {
         width: 100%;
         font-size: 20px;
+      }
+    }
+  }
+
+  @media (min-width: 43.75rem) and (max-width: 61.1875rem) {
+    .panel {
+      width: 83.33333%;
+
+      p {
+        width: 100%;
+      }
+
+      ul {
+        width: 100%;
       }
     }
   }
@@ -367,15 +381,13 @@ $fade-height: 50vh;
       padding-bottom: 0;
     }
 
-    @media only screen and (max-width: 900px) {
-
-    :global(.Quote.is-pullquote p) {
-      font-size: 1.625rem;
-      line-height: 1.4;
-      margin-bottom: 1.5rem;
+    @media only screen and (max-width: 43.75rem) {
+      :global(.Quote.is-pullquote p) {
+        font-size: 1.625rem;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+      }
     }
-
-  }
   }
 
   background-image: linear-gradient(

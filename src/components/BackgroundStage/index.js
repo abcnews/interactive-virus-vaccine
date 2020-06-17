@@ -103,13 +103,13 @@ export default props => {
 
     // Start the background out as hidden
     // so it doesn't go over the body text
-    const backgroundStage = document.querySelector(
-      "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
-    );
+    // const backgroundStage = document.querySelector(
+    //   "div[data-interactive-scrollout-root] > div > div.sgMpdhCf"
+    // );
 
-    // Start off invisible so we don't have to wait
-    // for Custom panel scroll
-    backgroundStage.style.visibility = "hidden";
+    // // Start off invisible so we don't have to wait
+    // // for Custom panel scroll
+    // backgroundStage.style.visibility = "hidden";
 
     // IE11 doesn't translate vw so let's hack a solution
     // NO WAIT THIS WON'T WORK BECAUSE SVG NOT ON THERE INITIALLY
