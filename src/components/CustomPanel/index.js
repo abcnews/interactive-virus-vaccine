@@ -155,7 +155,9 @@ export default props => {
             props.config.scrollout
               ? "custom-scrollout-panel"
               : "custom-normal-panel"
-          } ${styles.panel}`}
+          } ${styles.panel} ${props.config.spacertop ? styles.spacerTop : ""} ${
+            props.config.spacerbottom ? styles.spacerBottom : ""
+          }`}
           ref={base}
           style={{ opacity: opacity }}
         ></div>

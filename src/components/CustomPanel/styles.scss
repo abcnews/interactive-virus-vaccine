@@ -432,3 +432,13 @@ $fade-height: 50vh;
     margin-bottom: 0 !important;
   }
 }
+
+@media (min-width: 43.75rem) {
+  .spacer-top {
+    padding-top: 256px;
+  }
+
+  .spacer-bottom {
+    padding-bottom: 256px;
+  }
+}

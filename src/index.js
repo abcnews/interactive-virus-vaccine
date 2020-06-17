@@ -25,6 +25,9 @@ function renderApp() {
   }
 
   render(<App scrollyData={scrollyData} />, root);
+
+  // IE11 being stubborn
+  document.body.style.background = "#E0FFFF";
 }
 
 function init() {
