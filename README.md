@@ -1,4 +1,6 @@
-# interactive-scrollout
+# interactive-virus-vaccine
+
+Interactive code for ABC News Story Lab's [Virus & Vaccine](https://www.abc.net.au/news/2020-06-18/coronavirus-covid-vaccine-race-how-the-candidates-work/12310814?nw=0) piece.
 
 A project generated from [aunty](https://github.com/abcnews/aunty)'s `react` project template.
 
