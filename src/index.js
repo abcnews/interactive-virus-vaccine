@@ -8,14 +8,12 @@ import App from "./components/App";
 import jankdefer from "jankdefer";
 import { loadOdysseyScrollyteller } from "@abcnews/scrollyteller";
 
+import makeFragmentsGoFullWidth from "./make-fragments-go-full-width.js"
+
 const PROJECT_NAME = "interactive-scrollout";
 const root = document.querySelector(`[data-${PROJECT_NAME}-root]`);
 
-const fragment = document.querySelector(".html-fragment");
-const embed = document.querySelector(".embed-fragment");
-
-if (fragment) fragment.className = "inline-content html-fragment full u-full";
-if (embed) embed.className = "embed-fragment u-full";
+makeFragmentsGoFullWidth();
 
 let scrollyData;
 
