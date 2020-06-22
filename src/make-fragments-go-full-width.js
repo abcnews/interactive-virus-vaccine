@@ -5,8 +5,8 @@ const main = () => {
 
   const fragmentsLists = [phase1, phase1mobile, phase2];
 
-  for (fragments of fragmentsLists) {
-    for (fragment of fragments) {
+  for (const fragments of fragmentsLists) {
+    for (const fragment of fragments) {
       fragment.classList.add("u-full");
     }
   }
