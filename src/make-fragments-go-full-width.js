@@ -1,3 +1,8 @@
+/**
+ * Makes fragments go full width.
+ * @param none
+ * @returns nothing
+ */
 const main = () => {
   const phase1 = document.querySelectorAll(".html-fragment");
   const phase1mobile = document.querySelectorAll(".embed-fragment");
