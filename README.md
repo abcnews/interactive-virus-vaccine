@@ -11,3 +11,4 @@ TODO: Work this into Odyssey iteself later on.
 ## Authors
 
 - Joshua Byrd ([phocks@gmail.com](mailto:phocks@gmail.com))
+- Colin Gourlay ([gourlay.colin@abc.net.au](mailto:gourlay.colin@abc.net.au))
